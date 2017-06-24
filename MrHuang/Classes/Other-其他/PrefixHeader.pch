@@ -1,0 +1,38 @@
+//
+//  PrefixHeader.pch
+//  MrHuang
+//
+//  Created by MrHuang on 16/5/26.
+//  Copyright © 2016年 MrHuang. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+#import "UIView+Extended.h"
+
+#import "UIBarButtonItem+HJExtension.h"
+#import "XMGConst.h"
+
+#ifdef DEBUG
+#define HJLog(...) NSLog(__VA_ARGS__)
+#else
+#define HJLog(...)
+#endif
+
+#define HJLogFunc HJLog(@"%s", __func__)
+
+#define HJGBColor(r, g, b) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:1.0]
+
+#define HJGlobalBg HJRGBColor(223, 223, 223)
+
+
+#define HJColorA(r, g, b, a) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:(a)/255.0]
+#define HJColor(r, g, b) HJColorA((r), (g), (b), 255)
+#define HJRandomColor HJColor(arc4random_uniform(255), arc4random_uniform(255), arc4random_uniform(255))
+#define HJrayColor(v) HJColor((v), (v), (v))
+#define HJCommonBgColor HJrayColor(206)
+
+#define URL @"https://api.budejie.com/api/api_open.php"
+
+#endif /* PrefixHeader_pch */
