@@ -42,6 +42,7 @@ static  NSString * const HJTopicId = @"topic";
 
 -(void)setuptable
 {
+    
      self.tableView.rowHeight = 300;
     
     self.tableView.backgroundColor = HJCommonBgColor;
@@ -49,8 +50,8 @@ static  NSString * const HJTopicId = @"topic";
 //    去掉tableview的分割线
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
-    // 内边距
-    self.tableView.contentInset = UIEdgeInsetsMake(64 + 35, 0, 49, 0);
+//    // 内边距
+    self.tableView.contentInset = UIEdgeInsetsMake(35, 0, 0, 0);
     self.tableView.scrollIndicatorInsets = self.tableView.contentInset;
     
 //    注册cell

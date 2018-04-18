@@ -75,7 +75,7 @@
     UIScrollView *scrollView = [[UIScrollView alloc]init];
     scrollView.backgroundColor=HJRandomColor;
     scrollView.delegate =self;
-    scrollView.frame = self.view.bounds;
+    scrollView.frame = [UIScreen mainScreen].bounds;
     scrollView.pagingEnabled = YES;
     scrollView.showsHorizontalScrollIndicator = NO;
     scrollView.showsVerticalScrollIndicator = NO;
@@ -91,7 +91,7 @@
 //        childVcView.y = 0;
 //        childVcView.height = scrollView.height;
 //        [scrollView addSubview:childVcView];
-//        
+//
 //        // 内边距
 //        childVcView.contentInset = UIEdgeInsetsMake(64 + 35, 0, 49, 0);
 //        childVcView.scrollIndicatorInsets = childVcView.contentInset;

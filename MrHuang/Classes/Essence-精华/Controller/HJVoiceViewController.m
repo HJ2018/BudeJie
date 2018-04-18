@@ -17,7 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // 内边距
-    self.tableView.contentInset = UIEdgeInsetsMake(64 + 35, 0, 49, 0);
+    self.tableView.contentInset = UIEdgeInsetsMake(35, 0, 0, 0);
     self.tableView.scrollIndicatorInsets = self.tableView.contentInset;
 }
 
