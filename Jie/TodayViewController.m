@@ -8,6 +8,7 @@
 
 #import "TodayViewController.h"
 #import <NotificationCenter/NotificationCenter.h>
+#import "HJAllViewController.h"
 
 @interface TodayViewController () <NCWidgetProviding>
 
@@ -19,6 +20,13 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 }
+- (IBAction)btnclick:(id)sender {
+    
+//    HJAllViewController *hj =  [[HJAllViewController alloc]init];
+    
+//    [self presentViewController:hj animated:NO completion:nil];
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
