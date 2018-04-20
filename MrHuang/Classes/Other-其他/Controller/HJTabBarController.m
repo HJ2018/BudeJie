@@ -13,12 +13,12 @@
 #import "HJMeconteoller.h"
 #import "HJTabBar.h"
 #import "HJNavigationController.h"
+#import "BSJTabBar.h"
 @implementation HJTabBarController
 
--(void)viewDidLoad
-{
-    [super viewDidLoad];
 
++(void)load
+{
     NSMutableDictionary *attrs = [NSMutableDictionary dictionary];
     attrs[NSFontAttributeName] = [UIFont systemFontOfSize:12];
     attrs[NSForegroundColorAttributeName] = [UIColor grayColor];
@@ -27,9 +27,15 @@
     selectedAttrs[NSFontAttributeName] = attrs[NSFontAttributeName];
     selectedAttrs[NSForegroundColorAttributeName] = [UIColor darkGrayColor];
     
-    UITabBarItem *item = [UITabBarItem appearance];
+//    UITabBarItem *item = [UITabBarItem appearance];
+    UITabBarItem *item = [UITabBarItem appearanceWhenContainedInInstancesOfClasses:@[[self class]]];
     [item setTitleTextAttributes:attrs forState:UIControlStateNormal];
     [item setTitleTextAttributes:selectedAttrs forState:UIControlStateSelected];
+}
+
+-(void)viewDidLoad
+{
+    [super viewDidLoad];
     
     [self addChilvc:[[HJEssenceController alloc]init] title:@"精华" image:@"tabBar_essence_icon" selectImage:@"tabBar_essence_click_icon"];
     
@@ -39,7 +45,18 @@
     
     [self addChilvc:[[HJMeconteoller alloc]init] title:@"我" image:@"tabBar_me_icon" selectImage:@"tabBar_me_click_icon"];
     
-    [self setValue:[[HJTabBar alloc] init] forKeyPath:@"tabBar"];
+    
+     BSJTabBar *tabBar = [[BSJTabBar alloc] init];
+    
+    [self setValue:tabBar forKeyPath:@"tabBar"];
+    
+    [tabBar setPublishBtnClick:^(BSJTabBar *tabBar, UIButton *publishBtn) {
+        
+        NSLog(@"-----");
+        
+    }];
+    
+    
 
 }
 -(void)addChilvc:(UIViewController *)vc title:(NSString *)title image:(NSString *)image selectImage:(NSString *)selectImage;
@@ -49,11 +66,11 @@
     vc.tabBarItem.title = title;
     vc.tabBarItem.image = [UIImage imageNamed:image];
     vc.tabBarItem.selectedImage = [UIImage imageNamed:selectImage];
-    
+
     HJNavigationController *nav = [[HJNavigationController alloc]initWithRootViewController:vc];
-    [nav.navigationBar setBackgroundImage:[UIImage imageNamed:@"navigationbarBackgroundWhite"] forBarMetrics:UIBarMetricsDefault];
-    [self addChildViewController:nav];
-    [self addChildViewController:nav];
+        [nav.navigationBar setBackgroundImage:[UIImage imageNamed:@"navigationbarBackgroundWhite"] forBarMetrics:UIBarMetricsDefault];
+        [self addChildViewController:nav];
+        [self addChildViewController:nav];
     
 }
 

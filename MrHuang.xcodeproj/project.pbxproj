@@ -63,6 +63,8 @@
 		A1EFD9C82087302300B9ED83 /* NSObject+Log.m in Sources */ = {isa = PBXBuildFile; fileRef = A1EFD9C42087302300B9ED83 /* NSObject+Log.m */; };
 		A1EFD9C92087302300B9ED83 /* UIImage+Antialias.m in Sources */ = {isa = PBXBuildFile; fileRef = A1EFD9C62087302300B9ED83 /* UIImage+Antialias.m */; };
 		A1EFD9CB2087303500B9ED83 /* Foundation+Log.m in Sources */ = {isa = PBXBuildFile; fileRef = A1EFD9CA2087303500B9ED83 /* Foundation+Log.m */; };
+		A1EFD9D62089BA6D00B9ED83 /* BSJTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = A1EFD9D52089BA6D00B9ED83 /* BSJTabBar.m */; };
+		A1EFD9D92089BB5300B9ED83 /* UIButton+HJ.m in Sources */ = {isa = PBXBuildFile; fileRef = A1EFD9D82089BB5300B9ED83 /* UIButton+HJ.m */; };
 		A33958601E07B2F0009D6A59 /* ADViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A339585E1E07B2F0009D6A59 /* ADViewController.m */; };
 		A33958611E07B2F0009D6A59 /* ADViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A339585F1E07B2F0009D6A59 /* ADViewController.xib */; };
 		BA1848B615B012A2CD361616 /* Pods_MrHuang.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF768C988BDA91715AE9FE5A /* Pods_MrHuang.framework */; };
@@ -193,6 +195,10 @@
 		A1EFD9C52087302300B9ED83 /* UIColor+Hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Hex.h"; sourceTree = "<group>"; };
 		A1EFD9C62087302300B9ED83 /* UIImage+Antialias.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Antialias.m"; sourceTree = "<group>"; };
 		A1EFD9CA2087303500B9ED83 /* Foundation+Log.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Foundation+Log.m"; sourceTree = "<group>"; };
+		A1EFD9D42089BA6D00B9ED83 /* BSJTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSJTabBar.h; sourceTree = "<group>"; };
+		A1EFD9D52089BA6D00B9ED83 /* BSJTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSJTabBar.m; sourceTree = "<group>"; };
+		A1EFD9D72089BB5300B9ED83 /* UIButton+HJ.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIButton+HJ.h"; sourceTree = "<group>"; };
+		A1EFD9D82089BB5300B9ED83 /* UIButton+HJ.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIButton+HJ.m"; sourceTree = "<group>"; };
 		A339585D1E07B2F0009D6A59 /* ADViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADViewController.h; sourceTree = "<group>"; };
 		A339585E1E07B2F0009D6A59 /* ADViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADViewController.m; sourceTree = "<group>"; };
 		A339585F1E07B2F0009D6A59 /* ADViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ADViewController.xib; sourceTree = "<group>"; };
@@ -519,12 +525,16 @@
 		53B9E4B91CF6A65F00124A15 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				A1EFD9D42089BA6D00B9ED83 /* BSJTabBar.h */,
+				A1EFD9D52089BA6D00B9ED83 /* BSJTabBar.m */,
 				53B9E4BA1CF6A65F00124A15 /* HJTabBar.h */,
 				53B9E4BB1CF6A65F00124A15 /* HJTabBar.m */,
 				53486F941CFE9D52007818F0 /* HJQuickLoginButton.h */,
 				53486F951CFE9D52007818F0 /* HJQuickLoginButton.m */,
 				53283A901D86932F000445F8 /* HJRefreshHeader.h */,
 				53283A911D86932F000445F8 /* HJRefreshHeader.m */,
+				A1EFD9D72089BB5300B9ED83 /* UIButton+HJ.h */,
+				A1EFD9D82089BB5300B9ED83 /* UIButton+HJ.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -776,6 +786,7 @@
 				5354220B1CF6BABE002597E3 /* UIView+Extended.m in Sources */,
 				53629B551CF72E7B00F45B19 /* HJRecommendCategory.m in Sources */,
 				5391E0741D8E34B8002620D3 /* XMGConst.m in Sources */,
+				A1EFD9D92089BB5300B9ED83 /* UIButton+HJ.m in Sources */,
 				53629B591CF72EA200F45B19 /* HJRecommendCategoryCell.m in Sources */,
 				53B9E4BE1CF6A65F00124A15 /* HJMeconteoller.m in Sources */,
 				535422111CF6BB74002597E3 /* HJNavigationController.m in Sources */,
@@ -788,6 +799,7 @@
 				53619A5D1CFD3C5200B1AB7E /* HJRecommendTagCell.m in Sources */,
 				538BC0681D24F37A0091D5F7 /* HJPictureViewController.m in Sources */,
 				A33958601E07B2F0009D6A59 /* ADViewController.m in Sources */,
+				A1EFD9D62089BA6D00B9ED83 /* BSJTabBar.m in Sources */,
 				A1EFD9C82087302300B9ED83 /* NSObject+Log.m in Sources */,
 				53A3BF7A1CF817B50015DC0B /* HJRecommendUser.m in Sources */,
 				53486F9A1CFEA027007818F0 /* HJLoginRegisterViewController.m in Sources */,

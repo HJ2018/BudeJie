@@ -20,6 +20,9 @@
 #define HJLog(...)
 #endif
 
+
+#define LMJWeakSelf(type)  __weak typeof(type) weak##type = type
+
 #define HJLogFunc HJLog(@"%s", __func__)
 
 #define HJGBColor(r, g, b) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:1.0]
