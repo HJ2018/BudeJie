@@ -207,7 +207,7 @@ static NSString * const HJUserId = @"user";
     
     // 设置inset
     self.automaticallyAdjustsScrollViewInsets = NO;
-    self.categoryTableview.contentInset = UIEdgeInsetsMake(64, 0, 0, 0);
+    self.categoryTableview.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
     self.userTableView.contentInset = self.categoryTableview.contentInset;
     self.userTableView.rowHeight = 70;
     

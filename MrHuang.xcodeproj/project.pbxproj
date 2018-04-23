@@ -548,12 +548,28 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		A13C6BA3208D787A00AC178E /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = View;
+			path = "MrHuang/Classes/AD-广告页/View";
+			sourceTree = SOURCE_ROOT;
+		};
+		A13C6BA4208D787A00AC178E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
+			path = "MrHuang/Classes/AD-广告页/Model";
+			sourceTree = SOURCE_ROOT;
+		};
 		A33958591E07B2C1009D6A59 /* AD-广告页 */ = {
 			isa = PBXGroup;
 			children = (
 				A339585A1E07B2C1009D6A59 /* Controller */,
-				A339585B1E07B2C1009D6A59 /* Model */,
-				A339585C1E07B2C1009D6A59 /* View */,
+				A13C6BA4208D787A00AC178E /* Model */,
+				A13C6BA3208D787A00AC178E /* View */,
 			);
 			path = "AD-广告页";
 			sourceTree = "<group>";
@@ -566,20 +582,6 @@
 				A339585F1E07B2F0009D6A59 /* ADViewController.xib */,
 			);
 			path = Controller;
-			sourceTree = "<group>";
-		};
-		A339585B1E07B2C1009D6A59 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		A339585C1E07B2C1009D6A59 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		ACEB398E0A878EC2409A44E0 /* Pods */ = {
@@ -639,7 +641,7 @@
 		53B9E4761CF6A5B700124A15 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0920;
 				ORGANIZATIONNAME = MrHuang;
 				TargetAttributes = {
 					537561041DA9E8A000B63DBC = {
@@ -897,14 +899,20 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -943,14 +951,20 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;

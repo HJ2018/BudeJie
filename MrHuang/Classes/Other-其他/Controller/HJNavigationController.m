@@ -15,13 +15,36 @@
 @implementation HJNavigationController
 
 
++(void)load{
+    
+//    设置navbartitle 的大小
+    UINavigationBar *navBar =[UINavigationBar appearanceWhenContainedInInstancesOfClasses:@[[self class]]];
+    NSMutableDictionary *dict = [[NSMutableDictionary alloc]init];
+    
+    dict[NSFontAttributeName] = [UIFont boldSystemFontOfSize:20];
+    
+    [navBar setTitleTextAttributes:dict];
+}
+
+
 
 - (void)viewDidLoad {
     
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.interactivePopGestureRecognizer.delegate = self;
+//    self.interactivePopGestureRecognizer.delegate = self;
+    
+//    修改成全屏滑动
+    
+    UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc]initWithTarget:self.interactivePopGestureRecognizer.delegate action:@selector(handleNavigationTransition:)];
+    
+    [self.view addGestureRecognizer:pan];
+    
+    pan.delegate = self;
+    
+    self.interactivePopGestureRecognizer.enabled = YES;
+    
     
     [self.navigationBar setBackgroundImage:[UIImage imageNamed:@"navigationbarBackgroundWhite"] forBarMetrics:UIBarMetricsDefault];
     
@@ -55,6 +78,8 @@
     [super pushViewController:viewController animated:animated];
     
 }
+
+
 
 - (void)back
 {

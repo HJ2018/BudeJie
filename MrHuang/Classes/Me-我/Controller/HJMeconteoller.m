@@ -13,6 +13,8 @@
 @implementation HJMeconteoller
 
 
+
+
 -(instancetype)init
 {
     return [self initWithStyle:UITableViewStyleGrouped];
@@ -84,6 +86,8 @@
 {
     HJLog(@"333");
     HJSettingViewController *setting = [[HJSettingViewController alloc]init];
+    
+    setting.view.backgroundColor = [UIColor whiteColor];
     
     [self.navigationController pushViewController:setting animated:YES];
 }
