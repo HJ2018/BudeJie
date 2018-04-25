@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -19,11 +20,12 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FO1-c4-U5a">
-                    <rect key="frame" x="87.5" y="304" width="230" height="61"/>
+                    <rect key="frame" x="87.5" y="294" width="230" height="81.5"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="230" id="hYw-Qg-1f2"/>
                     </constraints>
-                    <string key="text">快快登录吧, 关注百思最in牛人
+                    <string key="text">快快登录吧,
+ 关注百思最in牛人
 好友动态让你过把瘾儿~
 欧耶~~~~!</string>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -31,7 +33,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="header_cry_icon" translatesAutoresizingMaskIntoConstraints="NO" id="5YX-Z3-LiF">
-                    <rect key="frame" x="163.5" y="186" width="48" height="48"/>
+                    <rect key="frame" x="163.5" y="176" width="48" height="48"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="48" id="8ir-aO-upL"/>
                         <constraint firstAttribute="height" constant="48" id="huw-q6-qJ3"/>
