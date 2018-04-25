@@ -61,6 +61,10 @@ static NSString * const XMGTagsId = @"tag";
     self.tableView.rowHeight = 70;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.backgroundColor = HJGBColor(223, 223, 223);
+    
+    self.tableView.separatorInset = UIEdgeInsetsZero;
+    
+    
 }
 
 
@@ -80,6 +84,7 @@ static NSString * const XMGTagsId = @"tag";
 //    
     static NSString *HJTageID = @"tag";
     HJRecommendTagCell *cell = [tableView dequeueReusableCellWithIdentifier:HJTageID];
+    
     
     cell.recommendTag = self.tags[indexPath.row];
     return cell;

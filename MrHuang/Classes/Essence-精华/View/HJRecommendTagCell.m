@@ -20,6 +20,14 @@
 @end
 @implementation HJRecommendTagCell
 
+
+-(void)awakeFromNib
+{
+    [super awakeFromNib];
+    
+    self.layoutMargins = UIEdgeInsetsZero;
+}
+
 -(void)setRecommendTag:(XMGRecommendTag *)recommendTag
 {
     _recommendTag = recommendTag;
