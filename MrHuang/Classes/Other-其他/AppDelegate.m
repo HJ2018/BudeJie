@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "HJTabBarController.h"
+#import "ADViewController.h"
 @interface AppDelegate ()
 
 @end
@@ -21,7 +22,7 @@
     self.window = [[UIWindow alloc]init];
     self.window.frame = [UIScreen mainScreen].bounds;
     
-    self.window.rootViewController = [[HJTabBarController alloc]init];
+    self.window.rootViewController = [[ADViewController alloc]init];
     
     
     [self.window makeKeyAndVisible];

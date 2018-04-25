@@ -9,7 +9,7 @@
 #import "HJRecommendTagCell.h"
 #import "XMGRecommendTag.h"
 #import "UIImageView+WebCache.h"
-
+#import "UIImage+Antialias.m"
 
 
 @interface HJRecommendTagCell()
@@ -24,7 +24,28 @@
 {
     _recommendTag = recommendTag;
     
-    [self.imageListImageView sd_setImageWithURL:[NSURL URLWithString:recommendTag.image_list]];
+//    [self.imageListImageView sd_setImageWithURL:[NSURL URLWithString:recommendTag.image_list]];
+    
+    [self.imageListImageView sd_setImageWithURL:[NSURL URLWithString:recommendTag.image_list] placeholderImage:[UIImage imageNamed:@""] options:SDWebImageCacheMemoryOnly completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
+        
+        UIGraphicsBeginImageContextWithOptions(image.size, NO, 0);
+        
+        UIBezierPath *path=[UIBezierPath bezierPathWithOvalInRect:CGRectMake(0, 0, image.size.width, image.size.height)];
+        
+        [path addClip];
+        
+        [image drawAtPoint:CGPointZero];
+        
+        image = UIGraphicsGetImageFromCurrentImageContext();
+        
+        UIGraphicsEndImageContext();
+        
+        
+        
+        self.imageListImageView.image = image;
+        
+    }];
+    
     self.themeNameLabel.text = recommendTag.theme_name;
     NSString *subNumber = nil;
     if (recommendTag.sub_number < 10000) {

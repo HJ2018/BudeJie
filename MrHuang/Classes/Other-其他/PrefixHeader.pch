@@ -39,3 +39,15 @@
 #define URL @"https://api.budejie.com/api/api_open.php"
 
 #endif /* PrefixHeader_pch */
+
+// 将数据写到桌面的plist
+#define XMGWriteToPlist(data, filename) [data writeToFile:[NSString stringWithFormat:@"/Users/xiaomage/Desktop/%@.plist", filename] atomically:YES];
+
+
+#define BSScreenH [UIScreen mainScreen].bounds.size.height
+#define BSScreenW [UIScreen mainScreen].bounds.size.width
+
+#define iPhone6P (BSScreenH == 736)
+#define iPhone6 (BSScreenH == 667)
+#define iPhone5 (BSScreenH == 568)
+#define iPhone4 (BSScreenH == 480)

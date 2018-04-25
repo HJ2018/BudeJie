@@ -52,7 +52,7 @@ static NSString * const XMGTagsId = @"tag";
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         [SVProgressHUD showErrorWithStatus:@"加载标签数据失败!"];
     }];
-
+    
 }
 - (void)setupTableView
 {
