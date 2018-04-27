@@ -7,3 +7,8 @@ UIKIT_EXTERN CGFloat const XMGSmallMargin;
 
 /** 公共的URL */
 UIKIT_EXTERN NSString * const XMGCommonURL;
+
+
+UIKIT_EXTERN NSInteger const cols;
+
+UIKIT_EXTERN CGFloat const margin;

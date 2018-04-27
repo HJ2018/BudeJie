@@ -38,6 +38,10 @@
 
 #define URL @"https://api.budejie.com/api/api_open.php"
 
+#define URL_GG  @"http://mobads.baidu.com/cpro/ui/mads.php"
+
+#define URL_ME  @"http://api.budejie.com/api/api_open.php"
+
 #endif /* PrefixHeader_pch */
 
 // 将数据写到桌面的plist

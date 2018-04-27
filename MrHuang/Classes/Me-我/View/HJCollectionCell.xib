@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="HJCollectionCell">
+            <rect key="frame" x="0.0" y="0.0" width="138" height="134"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="138" height="134"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QyV-4i-8nl">
+                        <rect key="frame" x="34.5" y="10" width="69" height="67"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VVF-Pe-FJn">
+                        <rect key="frame" x="0.0" y="112" width="138" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="VVF-Pe-FJn" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="0IQ-e4-6pB"/>
+                <constraint firstItem="QyV-4i-8nl" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" multiplier="0.5" id="CcV-Ro-gOp"/>
+                <constraint firstItem="QyV-4i-8nl" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="Sm7-xJ-6jb"/>
+                <constraint firstItem="QyV-4i-8nl" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="deX-AN-Twp"/>
+                <constraint firstAttribute="bottom" secondItem="VVF-Pe-FJn" secondAttribute="bottom" constant="5" id="nFR-ZE-OhQ"/>
+                <constraint firstItem="QyV-4i-8nl" firstAttribute="height" secondItem="gTV-IL-0wX" secondAttribute="height" multiplier="0.5" id="otv-5x-tDc"/>
+                <constraint firstAttribute="trailing" secondItem="VVF-Pe-FJn" secondAttribute="trailing" id="vyu-B9-HMw"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="SEy-5g-ep8"/>
+            <size key="customSize" width="138" height="134"/>
+            <connections>
+                <outlet property="collImage" destination="QyV-4i-8nl" id="qsP-ya-Yig"/>
+                <outlet property="collLable" destination="VVF-Pe-FJn" id="TPX-oF-8lY"/>
+            </connections>
+            <point key="canvasLocation" x="-27" y="49"/>
+        </collectionViewCell>
+    </objects>
+</document>

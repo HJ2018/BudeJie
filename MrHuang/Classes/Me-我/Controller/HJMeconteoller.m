@@ -10,9 +10,28 @@
 #import "HJCell.h"
 #import "HJMeFooterView.h"
 #import "HJSettingViewController.h"
+#import "HJCollectionCell.h"
+#import "XMGSessionManager.h"
+#import "MJExtension.h"
+#import "HJMeSquare.h"
+#import "UIImageView+WebCache.h"
+#import "XMGConst.h"
+
+
+static NSString * const ID = @"cell";
+
+@interface HJMeconteoller () <UICollectionViewDataSource>
+
+@property(nonatomic ,strong)NSArray *dataArr;
+
+@property(nonatomic ,weak)UICollectionView *collectionView;
+
+@property(nonatomic ,weak)UICollectionViewFlowLayout *layout;
+
+@end
+
+
 @implementation HJMeconteoller
-
-
 
 
 -(instancetype)init
@@ -24,7 +43,7 @@
 {
     [super viewDidLoad];
     
-    self.tableView.tableFooterView = [[HJMeFooterView alloc]init];
+//    self.tableView.tableFooterView = [[HJMeFooterView alloc]init];
     
     
     self.tableView.sectionHeaderHeight = 0;
@@ -43,6 +62,72 @@
     
     // 设置背景色
     self.view.backgroundColor = HJGBColor(223, 223, 223);
+    
+    [self getData];
+}
+
+
+-(void)getData{
+    
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[@"a"] = @"square";
+    params[@"c"] = @"topic";
+    
+    [[XMGSessionManager new]request:RequestTypeGet urlStr:URL_ME parameter:params resultBlock:^(id responseObject, NSError *error) {
+        _dataArr =[HJMeSquare mj_objectArrayWithKeyValuesArray:responseObject[@"square_list"]];
+        
+        [self seeFootView];
+        
+        
+    }];
+    
+}
+
+
+-(void)seeFootView{
+    
+    
+    UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
+
+    CGFloat itemWH = (BSScreenW - (cols - 1) * margin) / cols;
+    layout.itemSize = CGSizeMake(itemWH, itemWH);
+    layout.minimumInteritemSpacing = margin;
+    layout.minimumLineSpacing = margin;
+    
+    CGFloat collectionViewH =(itemWH + 1) * (_dataArr.count%cols == 0 ? _dataArr.count/cols : _dataArr.count/cols + 1);
+    UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, 0, collectionViewH) collectionViewLayout:layout];
+    collectionView.backgroundColor = self.tableView.backgroundColor;
+    self.tableView.tableFooterView = collectionView;
+    collectionView.scrollEnabled = NO;
+    
+    collectionView.dataSource = self;
+    
+//    [collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:ID];
+    
+    [collectionView registerNib:[UINib nibWithNibName:@"HJCollectionCell" bundle:nil] forCellWithReuseIdentifier:ID];
+    
+    
+    [collectionView reloadData];
+}
+
+
+#pragma mack - UICollectionViewDataSource
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    return _dataArr.count;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+
+    HJCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:ID forIndexPath:indexPath];
+    
+    HJMeSquare *data = _dataArr[indexPath.row];
+    
+    [cell.collImage sd_setImageWithURL:[NSURL URLWithString:data.icon]];
+    cell.collLable.text = data.name;
+    
+    return cell;
 }
 
 

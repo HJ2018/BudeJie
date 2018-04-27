@@ -9,6 +9,8 @@
 #import "HJLoginRegisterViewController.h"
 
 @interface HJLoginRegisterViewController ()
+@property (weak, nonatomic) IBOutlet UIView *logView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *leadingView;
 
 @end
 
@@ -23,5 +25,17 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+- (IBAction)qiehuanBtn:(id)sender {
+    
+  
+    _leadingView.constant = _leadingView.constant == 0 ? -self.view.frame.size.width : 0;
+    
+    [UIView animateWithDuration:0.5 animations:^{
+        
+        [self.view layoutIfNeeded];
+    }];
+
+    
+}
 
 @end
