@@ -16,11 +16,13 @@
 #import "HJMeSquare.h"
 #import "UIImageView+WebCache.h"
 #import "XMGConst.h"
+#import <SafariServices/SafariServices.h>
+
 
 
 static NSString * const ID = @"cell";
 
-@interface HJMeconteoller () <UICollectionViewDataSource>
+@interface HJMeconteoller () <UICollectionViewDataSource,UICollectionViewDelegate,SFSafariViewControllerDelegate>
 
 @property(nonatomic ,strong)NSArray *dataArr;
 
@@ -95,12 +97,15 @@ static NSString * const ID = @"cell";
     layout.minimumLineSpacing = margin;
     
     CGFloat collectionViewH =(itemWH + 1) * (_dataArr.count%cols == 0 ? _dataArr.count/cols : _dataArr.count/cols + 1);
+//   CGFloat collectionViewH = ((_dataArr.count - 1)/cols +1) * itemWH;
+    
     UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, 0, collectionViewH) collectionViewLayout:layout];
     collectionView.backgroundColor = self.tableView.backgroundColor;
     self.tableView.tableFooterView = collectionView;
     collectionView.scrollEnabled = NO;
     
     collectionView.dataSource = self;
+    collectionView.delegate = self;
     
 //    [collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:ID];
     
@@ -117,6 +122,22 @@ static NSString * const ID = @"cell";
     return _dataArr.count;
 }
 
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    HJMeSquare *item = _dataArr[indexPath.row];
+    if (![item.url containsString:@"http"]) return;
+    
+    NSURL *url = [NSURL URLWithString:item.url];
+    
+    // SFSafariViewController使用Modal
+    SFSafariViewController *safariVc = [[SFSafariViewController alloc] initWithURL:url];
+  
+    [self presentViewController:safariVc animated:YES completion:nil];
+    
+    
+    
+}
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
 
