@@ -25,6 +25,7 @@
 /** 标题栏 */
 @property (nonatomic, weak) UIView *titlesView;
 
+
 @end
 
 @implementation HJEssenceController
@@ -42,6 +43,9 @@
     [self setupTitleView];
     
     [self addChildVcView];
+
+    // 添加第0个子控制器的view
+    [self addChildVcViewIntoScrollView:0];
     
 
 }
@@ -79,24 +83,11 @@
     scrollView.pagingEnabled = YES;
     scrollView.showsHorizontalScrollIndicator = NO;
     scrollView.showsVerticalScrollIndicator = NO;
+//    scrollView.scrollsToTop = NO;
     scrollView.contentSize = CGSizeMake(self.childViewControllers.count * scrollView.width, 0);
     [self.view addSubview:scrollView];
-    self.scrollView= scrollView; 
-    
-//    NSInteger count = self.childViewControllers.count;
-//    for (NSInteger i =0; i<count; i++) {
-//        UITableView *childVcView = (UITableView *)self.childViewControllers[i].view;
-//        childVcView.backgroundColor = HJRandomColor;
-//        childVcView.x = i * childVcView.width;
-//        childVcView.y = 0;
-//        childVcView.height = scrollView.height;
-//        [scrollView addSubview:childVcView];
-//
-//        // 内边距
-//        childVcView.contentInset = UIEdgeInsetsMake(64 + 35, 0, 49, 0);
-//        childVcView.scrollIndicatorInsets = childVcView.contentInset;
-//    }
-//     scrollView.contentSize = CGSizeMake(count * scrollView.width, 0);
+    self.scrollView= scrollView;
+
 }
 
 -(void)setupTitleView
@@ -140,18 +131,44 @@
 }
 -(void)titClick:(HJTitleButton *)titleButton
 {
+    
+    
+    if (self.selectedTitleButton == titleButton) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:TitleButtonDidRepeatClickNotification object:nil];
+    }
+
+    
     self.selectedTitleButton.selected = NO;
     titleButton.selected = YES;
     self.selectedTitleButton = titleButton;
     
+     NSUInteger index = titleButton.tag;
     [UIView animateWithDuration:0.25 animations:^{
         
         self.indicatorView.width = titleButton.titleLabel.width;
         self.indicatorView.centerX = titleButton.centerX;
+    }completion:^(BOOL finished) {
+        // 添加子控制器的view
+        [self addChildVcViewIntoScrollView:index];
     }];
     CGPoint offset = self.scrollView.contentOffset;
     offset.x = titleButton.tag * self.scrollView.width;
     [self.scrollView setContentOffset:offset animated:YES];
+    
+    
+    // 设置index位置对应的tableView.scrollsToTop = YES， 其他都设置为NO
+//    for (NSUInteger i = 0; i < self.childViewControllers.count; i++) {
+//        UIViewController *childVc = self.childViewControllers[i];
+//        // 如果view还没有被创建，就不用去处理
+//        if (!childVc.isViewLoaded) continue;
+//
+//        UIScrollView *scrollView = (UIScrollView *)childVc.view;
+//        if (![scrollView isKindOfClass:[UIScrollView class]]) continue;
+//
+//       scrollView.scrollsToTop = (i == index);
+//
+//        NSLog(@"%d",scrollView.scrollsToTop);
+//    }
 }
 -(void)setupNav
 {
@@ -194,42 +211,39 @@
 
 #pragma mark - <UIScrollViewDelegate>
 
-
-//-(void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView
-//{
-
-//    NSInteger index = scrollView.contentOffset.x/scrollView.width;
-//    UIViewController *childVc =self.childViewControllers[index];
-//    childVc.view.y= 0;
-//    childVc.view.x= index * scrollView.width;
-//    childVc.view.width = scrollView.width;
-//    childVc.view.height = scrollView.height;
-//    [scrollView addSubview:childVc.view];
-//    [self addChildVcView];
-//    
-//}
-
-- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView
-{
-    [self addChildVcView];
-}
 /**
  *  人为触发的方法
  */
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
-//    NSUInteger index = scrollView.contentOffset.x/scrollView.width;
-//    
-//    HJTitleButton *titleBUtton = self.titlesView.subviews[index];
-//    [self titClick:titleBUtton];
     // 选中\点击对应的按钮
     NSUInteger index = scrollView.contentOffset.x / scrollView.width;
     HJTitleButton *titleButton = self.titlesView.subviews[index];
     [self titClick:titleButton];
     
-    // 添加子控制器的view
-    [self addChildVcView];
     
+}
+
+
+#pragma mark - 其他
+/**
+ *  添加第index个子控制器的view到scrollView中
+ */
+- (void)addChildVcViewIntoScrollView:(NSUInteger)index
+{
+    UIViewController *childVc = self.childViewControllers[index];
+    
+    // 如果view已经被加载过，就直接返回
+    if (childVc.isViewLoaded) return;
+    
+    // 取出index位置对应的子控制器view
+    UIView *childVcView = childVc.view;
+    
+    // 设置子控制器view的frame
+    CGFloat scrollViewW = self.scrollView.width;
+    childVcView.frame = CGRectMake(index * scrollViewW, 0, scrollViewW, self.scrollView.height);
+    // 添加子控制器的view到scrollView中
+    [self.scrollView addSubview:childVcView];
 }
 
 @end

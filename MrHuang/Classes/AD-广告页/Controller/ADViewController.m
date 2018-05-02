@@ -94,9 +94,13 @@
         
         _item = [XMGADItem mj_objectWithKeyValues:adDict];
         
-//        CGFloat h = BSScreenW / _item.w * _item.h;
+        CGFloat h = BSScreenW / _item.w * _item.h;
         
-        self.adView.frame = CGRectMake(0, 0, BSScreenW, BSScreenH);
+        if (h) {
+            self.adView.frame = CGRectMake(0, 0, BSScreenW, h);
+        }else self.adView.frame = CGRectMake(0, 0, BSScreenW, BSScreenH);
+        
+        
         
         [self.adView sd_setImageWithURL:[NSURL URLWithString:_item.w_picurl]];
         

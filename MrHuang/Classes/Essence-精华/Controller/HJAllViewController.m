@@ -22,9 +22,14 @@
 
 @property (nonatomic, copy) NSString *maxtime;
 
+
 @end
 
 @implementation HJAllViewController
+
+{
+    BOOL isref;
+}
 
 //重用标示
 static  NSString * const HJTopicId = @"topic";
@@ -37,8 +42,23 @@ static  NSString * const HJTopicId = @"topic";
     
     [self setuptable];
     
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(titleButtonDidRepeatClick) name:TitleButtonDidRepeatClickNotification object:nil];
+    
 
 }
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+-(void)titleButtonDidRepeatClick
+{
+    [self setupRefresh];
+}
+
+
 
 -(void)setuptable
 {
@@ -62,7 +82,8 @@ static  NSString * const HJTopicId = @"topic";
 
 -(void)setupRefresh
 {
-
+     if ([self.tableView.mj_header isRefreshing]) return;
+    
     self.tableView.mj_header = [HJRefreshHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewTopics)];
     
     [self.tableView.mj_header beginRefreshing];
@@ -74,6 +95,7 @@ static  NSString * const HJTopicId = @"topic";
 
 -(void)loadNewTopics
 {
+    
     NSMutableDictionary *params= [NSMutableDictionary dictionary];
     
     params[@"a"] = @"list";
@@ -93,7 +115,7 @@ static  NSString * const HJTopicId = @"topic";
         [self.tableView reloadData];
         
         [self.tableView.mj_header endRefreshing];
-        
+  
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"%@",error);
         

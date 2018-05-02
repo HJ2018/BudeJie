@@ -31,6 +31,8 @@ static NSString * const ID = @"cell";
 
 @property(nonatomic ,weak)UICollectionViewFlowLayout *layout;
 
+@property (nonatomic, assign) NSInteger totalSize;
+
 @end
 
 
@@ -181,7 +183,7 @@ static NSString * const ID = @"cell";
         cell.textLabel.text = @"登录/注册";
         cell.imageView.image = [UIImage imageNamed:@"publish-audio"];
     } else {
-        cell.textLabel.text = [FileTool sizeStr];
+        cell.textLabel.text = [self sizeStr];
         // 只要有其他cell设置过imageView.image, 其他不显示图片的cell都需要设置imageView.image = nil
         cell.imageView.image = nil;
     }
@@ -193,7 +195,14 @@ static NSString * const ID = @"cell";
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    [FileTool removeDirectoryPath:CachePath];
+    // 文件夹非常小,如果我的文件非常大
+    [FileTool getFileSize:CachePath completion:^(NSInteger totalSize) {
+        
+        _totalSize = totalSize;
+        
+        [self.tableView reloadData];
+        
+    }];
     [self.tableView reloadData];
 }
 
@@ -210,6 +219,29 @@ static NSString * const ID = @"cell";
 - (void)moonClick
 {
     HJLog(@"444");
+}
+
+
+// 获取缓存尺寸字符串
+- (NSString *)sizeStr
+{
+    NSInteger totalSize = _totalSize;
+    NSString *sizeStr = @"清除缓存";
+    // MB KB B
+    if (totalSize > 1000 * 1000) {
+        // MB
+        CGFloat sizeF = totalSize / 1000.0 / 1000.0;
+        sizeStr = [NSString stringWithFormat:@"%@(%.1fMB)",sizeStr,sizeF];
+    } else if (totalSize > 1000) {
+        // KB
+        CGFloat sizeF = totalSize / 1000.0;
+        sizeStr = [NSString stringWithFormat:@"%@(%.1fKB)",sizeStr,sizeF];
+    } else if (totalSize > 0) {
+        // B
+        sizeStr = [NSString stringWithFormat:@"%@(%.ldB)",sizeStr,totalSize];
+    }
+    
+    return sizeStr;
 }
 
 

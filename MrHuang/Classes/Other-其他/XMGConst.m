@@ -13,6 +13,15 @@ CGFloat const margin= 1;
 NSString * const XMGCommonURL = @"http://api.budejie.com/api/api_open.php";
 
 
+/** TitleButton被重复点击的通知 */
+
+NSString  * const TitleButtonDidRepeatClickNotification  = @"TitleButtonDidRepeatClickNotification";
+
+
+/** TabBarButton被重复点击的通知 */
+NSString  * const XMGTabBarButtonDidRepeatClickNotification = @"XMGTabBarButtonDidRepeatClickNotification";
+
+
 //-(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 //{
 //
