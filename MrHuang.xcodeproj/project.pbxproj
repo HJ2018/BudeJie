@@ -66,6 +66,7 @@
 		A1B024B62092A58B00323AC7 /* XMGSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A1B024B52092A58B00323AC7 /* XMGSessionManager.m */; };
 		A1B024BA2092AE6F00323AC7 /* HJCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A1B024B82092AE6F00323AC7 /* HJCollectionCell.m */; };
 		A1B024BB2092AE6F00323AC7 /* HJCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1B024B92092AE6F00323AC7 /* HJCollectionCell.xib */; };
+		A1DDB99920940B0F00FB1050 /* FileTool.m in Sources */ = {isa = PBXBuildFile; fileRef = A1DDB99820940B0F00FB1050 /* FileTool.m */; };
 		A1EFD9C72087302300B9ED83 /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = A1EFD9C22087302200B9ED83 /* UIColor+Hex.m */; };
 		A1EFD9C82087302300B9ED83 /* NSObject+Log.m in Sources */ = {isa = PBXBuildFile; fileRef = A1EFD9C42087302300B9ED83 /* NSObject+Log.m */; };
 		A1EFD9C92087302300B9ED83 /* UIImage+Antialias.m in Sources */ = {isa = PBXBuildFile; fileRef = A1EFD9C62087302300B9ED83 /* UIImage+Antialias.m */; };
@@ -208,6 +209,8 @@
 		A1B024B72092AE6F00323AC7 /* HJCollectionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HJCollectionCell.h; sourceTree = "<group>"; };
 		A1B024B82092AE6F00323AC7 /* HJCollectionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HJCollectionCell.m; sourceTree = "<group>"; };
 		A1B024B92092AE6F00323AC7 /* HJCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HJCollectionCell.xib; sourceTree = "<group>"; };
+		A1DDB99720940B0F00FB1050 /* FileTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FileTool.h; sourceTree = "<group>"; };
+		A1DDB99820940B0F00FB1050 /* FileTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FileTool.m; sourceTree = "<group>"; };
 		A1EFD9C12087302200B9ED83 /* NSObject+Log.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Log.h"; sourceTree = "<group>"; };
 		A1EFD9C22087302200B9ED83 /* UIColor+Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hex.m"; sourceTree = "<group>"; };
 		A1EFD9C32087302200B9ED83 /* UIImage+Antialias.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Antialias.h"; sourceTree = "<group>"; };
@@ -460,6 +463,8 @@
 				A1B024B72092AE6F00323AC7 /* HJCollectionCell.h */,
 				A1B024B82092AE6F00323AC7 /* HJCollectionCell.m */,
 				A1B024B92092AE6F00323AC7 /* HJCollectionCell.xib */,
+				A1DDB99720940B0F00FB1050 /* FileTool.h */,
+				A1DDB99820940B0F00FB1050 /* FileTool.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -848,6 +853,7 @@
 				A1EFD9CB2087303500B9ED83 /* Foundation+Log.m in Sources */,
 				538BC05F1D24F31C0091D5F7 /* HJAllViewController.m in Sources */,
 				53B9E4C21CF6A65F00124A15 /* main.m in Sources */,
+				A1DDB99920940B0F00FB1050 /* FileTool.m in Sources */,
 				53486F961CFE9D52007818F0 /* HJQuickLoginButton.m in Sources */,
 				53619A611CFD3E9D00B1AB7E /* XMGRecommendTagsViewController.m in Sources */,
 				538BC0651D24F3670091D5F7 /* HJVoiceViewController.m in Sources */,
