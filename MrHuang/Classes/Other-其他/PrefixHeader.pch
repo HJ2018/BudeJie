@@ -15,6 +15,9 @@
 #import "XMGConst.h"
 
 
+// 将数据写到桌面的plist
+#define XMGAFNWriteToPlist(filename) [responseObject writeToFile:[NSString stringWithFormat:@"//Users/jie.huang/Desktop/%@.plist", @#filename] atomically:YES];
+
 #define HJFunc HJLog(@"%s",__func__)
 
 #ifdef DEBUG
@@ -46,9 +49,6 @@
 #define URL_ME  @"http://api.budejie.com/api/api_open.php"
 
 #endif /* PrefixHeader_pch */
-
-// 将数据写到桌面的plist
-#define XMGWriteToPlist(data, filename) [data writeToFile:[NSString stringWithFormat:@"/Users/xiaomage/Desktop/%@.plist", filename] atomically:YES];
 
 
 #define BSScreenH [UIScreen mainScreen].bounds.size.height

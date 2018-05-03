@@ -45,6 +45,8 @@ static  NSString * const HJTopicId = @"topic";
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(titleButtonDidRepeatClick) name:TitleButtonDidRepeatClickNotification object:nil];
     
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tabBarButtonDidRepeatClick) name:XMGTabBarButtonDidRepeatClickNotification object:nil];
     HJFunc;
 
 }
@@ -56,8 +58,20 @@ static  NSString * const HJTopicId = @"topic";
 
 -(void)titleButtonDidRepeatClick
 {
-//    if (self.tableView.scrollsToTop == NO) return;
+    [self tabBarButtonDidRepeatClick];
+
+}
+
+- (void)tabBarButtonDidRepeatClick
+{
+    // 重复点击的不是精华按钮
+    if (self.view.window == nil) return;
+    
+    if (self.tableView.scrollsToTop == NO) return;
+    
     [self setupRefresh];
+    
+    HJLog(@"%@ 2222- 刷新数据", self.class);
 }
 
 
@@ -137,8 +151,6 @@ static  NSString * const HJTopicId = @"topic";
     [[AFHTTPSessionManager manager]GET:URL parameters:params progress:^(NSProgress * _Nonnull downloadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        
-//        [responseObject writeToFile:@"/Users/huangjie/Desktop/HJresponse.plist" atomically:YES ];
         
         self.maxtime = responseObject[@"info"][@"maxtime"];
 

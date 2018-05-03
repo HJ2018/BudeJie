@@ -71,7 +71,7 @@
     scrollView.pagingEnabled = YES;
     scrollView.showsHorizontalScrollIndicator = NO;
     scrollView.showsVerticalScrollIndicator = NO;
-//    scrollView.scrollsToTop = NO;
+    scrollView.scrollsToTop = NO;
     scrollView.contentSize = CGSizeMake(self.childViewControllers.count * scrollView.width, 0);
     [self.view addSubview:scrollView];
     self.scrollView= scrollView;
@@ -141,18 +141,18 @@
     
     
     // 设置index位置对应的tableView.scrollsToTop = YES， 其他都设置为NO
-//    for (NSUInteger i = 0; i < self.childViewControllers.count; i++) {
-//        UIViewController *childVc = self.childViewControllers[i];
-//        // 如果view还没有被创建，就不用去处理
-//        if (!childVc.isViewLoaded) continue;
-//
-//        UIScrollView *scrollView = (UIScrollView *)childVc.view;
-//        if (![scrollView isKindOfClass:[UIScrollView class]]) continue;
-//
-//       scrollView.scrollsToTop = (i == index);
-//
-//        NSLog(@"%d",scrollView.scrollsToTop);
-//    }
+    for (NSUInteger i = 0; i < self.childViewControllers.count; i++) {
+        UIViewController *childVc = self.childViewControllers[i];
+        // 如果view还没有被创建，就不用去处理
+        if (!childVc.isViewLoaded) continue;
+
+        UIScrollView *scrollView = (UIScrollView *)childVc.view;
+        if (![scrollView isKindOfClass:[UIScrollView class]]) continue;
+
+       scrollView.scrollsToTop = (i == index);
+
+        NSLog(@"%d",scrollView.scrollsToTop);
+    }
 }
 -(void)setupNav
 {
@@ -180,12 +180,12 @@
 #pragma mark - <UIScrollViewDelegate>
 
 
-- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView
-{
-    NSUInteger index = scrollView.contentOffset.x / scrollView.width;
-    HJTitleButton *titleButton = self.titlesView.subviews[index];
-    [self titClick:titleButton];
-}
+//- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView
+//{
+//    NSUInteger index = scrollView.contentOffset.x / scrollView.width;
+//    HJTitleButton *titleButton = self.titlesView.subviews[index];
+//    [self titClick:titleButton];
+//}
 
 /**
  *  人为触发的方法
@@ -195,6 +195,7 @@
     // 选中\点击对应的按钮
     NSUInteger index = scrollView.contentOffset.x / scrollView.width;
     HJTitleButton *titleButton = self.titlesView.subviews[index];
+    
     [self titClick:titleButton];
     
     
