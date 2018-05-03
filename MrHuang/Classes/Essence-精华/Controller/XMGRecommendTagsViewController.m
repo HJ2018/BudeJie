@@ -27,7 +27,11 @@ static NSString * const XMGTagsId = @"tag";
     [self setupTableView];
     
     [self loadTags];
+    
+    
+    
 }
+
 
 - (void)loadTags
 {

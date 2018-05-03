@@ -41,8 +41,6 @@
     [self setupScrollView];
     
     [self setupTitleView];
-    
-    [self addChildVcView];
 
     // 添加第0个子控制器的view
     [self addChildVcViewIntoScrollView:0];
@@ -52,25 +50,15 @@
 
 -(void)setupChildViewControllers
 {
-    HJAllViewController *all = [[HJAllViewController alloc]init];
+    [self addChildViewController: [[HJAllViewController alloc]init]];
     
-    [self addChildViewController:all];
+    [self addChildViewController:[[HJVideoViewController alloc]init]];
+
+    [self addChildViewController:[[HJVoiceViewController alloc]init]];
     
-    HJVideoViewController *Video = [[HJVideoViewController alloc]init];
+    [self addChildViewController:[[HJPictureViewController alloc]init]];
     
-    [self addChildViewController:Video];
-    
-    HJVoiceViewController *Voice = [[HJVoiceViewController alloc]init];
-    
-    [self addChildViewController:Voice];
-    
-    HJPictureViewController *Picture = [[HJPictureViewController alloc]init];
-    
-    [self addChildViewController:Picture];
-    
-    HJWordViewController *Word = [[HJWordViewController alloc]init];
-    
-    [self addChildViewController:Word];
+    [self addChildViewController: [[HJWordViewController alloc]init]];
 }
 
 -(void)setupScrollView
@@ -131,13 +119,9 @@
 }
 -(void)titClick:(HJTitleButton *)titleButton
 {
-    
-    
     if (self.selectedTitleButton == titleButton) {
         [[NSNotificationCenter defaultCenter] postNotificationName:TitleButtonDidRepeatClickNotification object:nil];
     }
-
-    
     self.selectedTitleButton.selected = NO;
     titleButton.selected = YES;
     self.selectedTitleButton = titleButton;
@@ -193,23 +177,15 @@
     [self.navigationController pushViewController:HJTag animated:YES];
 }
 
-#pragma mark - 添加子控制器的view
-- (void)addChildVcView
-{
-    // 子控制器的索引
-    NSUInteger index = self.scrollView.contentOffset.x / self.scrollView.width;
-    
-    NSLog(@"%ld",(unsigned long)index);
-    // 取出子控制器
-    UIViewController *childVc = self.childViewControllers[index];
-
-    if ([childVc isViewLoaded]) return;
-    
-    childVc.view.frame = self.scrollView.bounds;
-    [self.scrollView addSubview:childVc.view];
-}
-
 #pragma mark - <UIScrollViewDelegate>
+
+
+- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView
+{
+    NSUInteger index = scrollView.contentOffset.x / scrollView.width;
+    HJTitleButton *titleButton = self.titlesView.subviews[index];
+    [self titClick:titleButton];
+}
 
 /**
  *  人为触发的方法
@@ -245,5 +221,30 @@
     // 添加子控制器的view到scrollView中
     [self.scrollView addSubview:childVcView];
 }
-
 @end
+
+
+
+//tag 值的递归查找
+/*
+ @implementation UIView
+ 
+ - (UIView *)viewWithTag:(NSInteger)tag
+ {
+ // 如果自己的tag符合要求，就返回自己
+ if (self.tag == tag) return self;
+ 
+ // 遍历子控件（也包括子控件的子控件...），直到找到符合条件的子控件为止
+ for (UIView *subview in self.subviews) {
+ //        if (subview.tag == tag) return subview;
+ UIView *resultView = [subview viewWithTag:tag];
+ if (resultView) return resultView;
+ }
+ 
+ return nil;
+ }
+ 
+ @end
+ */
+
+

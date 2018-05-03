@@ -327,10 +327,10 @@
 		53B9E49A1CF6A65F00124A15 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				53B9E49B1CF6A65F00124A15 /* HJEssenceController.h */,
-				53B9E49C1CF6A65F00124A15 /* HJEssenceController.m */,
 				53619A5F1CFD3E9D00B1AB7E /* XMGRecommendTagsViewController.h */,
 				53619A601CFD3E9D00B1AB7E /* XMGRecommendTagsViewController.m */,
+				53B9E49B1CF6A65F00124A15 /* HJEssenceController.h */,
+				53B9E49C1CF6A65F00124A15 /* HJEssenceController.m */,
 				538BC05D1D24F31C0091D5F7 /* HJAllViewController.h */,
 				538BC05E1D24F31C0091D5F7 /* HJAllViewController.m */,
 				538BC0601D24F3480091D5F7 /* HJVideoViewController.h */,

@@ -45,6 +45,7 @@ static  NSString * const HJTopicId = @"topic";
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(titleButtonDidRepeatClick) name:TitleButtonDidRepeatClickNotification object:nil];
     
+    HJFunc;
 
 }
 
@@ -55,6 +56,7 @@ static  NSString * const HJTopicId = @"topic";
 
 -(void)titleButtonDidRepeatClick
 {
+//    if (self.tableView.scrollsToTop == NO) return;
     [self setupRefresh];
 }
 

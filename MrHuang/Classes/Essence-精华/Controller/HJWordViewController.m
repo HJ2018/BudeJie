@@ -19,7 +19,9 @@
     
     // 内边距
     self.tableView.contentInset = UIEdgeInsetsMake(35, 0, 0, 0);
-    self.tableView.scrollIndicatorInsets = self.tableView.contentInset; 
+    self.tableView.scrollIndicatorInsets = self.tableView.contentInset;
+    
+    HJFunc;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
