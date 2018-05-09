@@ -20,19 +20,29 @@
 /** 所有的帖子数据 */
 @property (nonatomic, strong) NSMutableArray<HJTopic *> *topics;
 
+/** 刷新页数 */
 @property (nonatomic, copy) NSString *maxtime;
+
+/**用来缓存cell的高度的*/
+@property (nonatomic, strong)NSMutableDictionary *cellHeightDict;
 
 
 @end
 
 @implementation HJAllViewController
 
-{
-    BOOL isref;
-}
-
 //重用标示
 static  NSString * const HJTopicId = @"topic";
+
+
+-(NSMutableDictionary *)cellHeightDict
+{
+    if (!_cellHeightDict) {
+     
+        _cellHeightDict = [NSMutableDictionary dictionary];
+    }
+    return _cellHeightDict;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -79,7 +89,7 @@ static  NSString * const HJTopicId = @"topic";
 -(void)setuptable
 {
     
-     self.tableView.rowHeight = 300;
+//     self.tableView.rowHeight = 300;
     
     self.tableView.backgroundColor = HJCommonBgColor;
     
@@ -107,6 +117,8 @@ static  NSString * const HJTopicId = @"topic";
     self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreTopics)];
  
 }
+
+
 #pragma mark - 数据加载
 
 -(void)loadNewTopics
@@ -114,14 +126,11 @@ static  NSString * const HJTopicId = @"topic";
     
     NSMutableDictionary *params= [NSMutableDictionary dictionary];
     
-    params[@"a"] = @"list";
-    params[@"c"] = @"data";
-    
-    
-    [[AFHTTPSessionManager manager]GET:@"https://api.budejie.com/api/api_open.php" parameters:params progress:^(NSProgress * _Nonnull downloadProgress) {
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        //        NSLog(@"%@",responseObject);
+    [params setObject:@"list" forKey:@"a"];
+    [params setObject:@"data" forKey:@"c"];
+    [params setObject:@1 forKey:@"type"];
+
+    [[XMGSessionManager new]request:RequestTypeGet urlStr:CommonURL parameter:params resultBlock:^(id responseObject, NSError *error) {
         
         self.maxtime = responseObject[@"info"][@"maxtime"];
         
@@ -131,10 +140,6 @@ static  NSString * const HJTopicId = @"topic";
         [self.tableView reloadData];
         
         [self.tableView.mj_header endRefreshing];
-  
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSLog(@"%@",error);
-        
     }];
 }
 
@@ -143,17 +148,14 @@ static  NSString * const HJTopicId = @"topic";
     
     NSMutableDictionary *params= [NSMutableDictionary dictionary];
     
-    params[@"a"] = @"list";
-    params[@"c"] = @"data";
-    params[@"maxtime"] = self.maxtime;
+    [params setObject:@"list" forKey:@"a"];
+    [params setObject:@"data" forKey:@"c"];
+    [params setObject:@1 forKey:@"type"];
+    [params setObject:self.maxtime forKey:@"maxtime"];
     
-    NSLog(@"%@",params);
-    [[AFHTTPSessionManager manager]GET:URL parameters:params progress:^(NSProgress * _Nonnull downloadProgress) {
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [[XMGSessionManager new]request:RequestTypeGet urlStr:CommonURL parameter:params resultBlock:^(id responseObject, NSError *error) {
         
         self.maxtime = responseObject[@"info"][@"maxtime"];
-
         
         NSArray *moreTopics = [HJTopic mj_objectArrayWithKeyValuesArray:responseObject[@"list"]];
         [self.topics addObjectsFromArray:moreTopics];
@@ -162,10 +164,6 @@ static  NSString * const HJTopicId = @"topic";
         [self.tableView reloadData];
         
         [self.tableView.mj_footer endRefreshing];
-        
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSLog(@"%@",error);
-        
     }];
 }
 
@@ -173,14 +171,74 @@ static  NSString * const HJTopicId = @"topic";
 {
      return self.topics.count;
 }
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    HJTopic *topic = self.topics[indexPath.row];
+    
+//    用模型的地址作为key
+    NSString *key = [NSString stringWithFormat:@"%p",topic];
+    
+    CGFloat cellHeight =  [self.cellHeightDict[key] doubleValue];
+    
+    if (cellHeight == 0) {
+    
+        cellHeight += 60;
+        
+        CGSize textMaxSize = CGSizeMake(BSScreenW - 40, MAXFLOAT);
+        
+        cellHeight += [topic.text boundingRectWithSize:textMaxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:16]} context:nil].size.height + 10;
+
+        cellHeight += 80;
+    
+        self.cellHeightDict[key] = @(cellHeight);
+        
+//        [self.cellHeightDict setObject:@(cellHeight) forKey:topic];
+    }
+
+    return cellHeight;
+    
+    
+    
+    //    过期方法
+    //    cellHeight += [topic.text sizeWithFont:[UIFont systemFontOfSize:16] constrainedToSize:textMaxSize].height + 10;
+    //    获取lable 宽度
+    //    [topic.text sizeWithFont:[UIFont systemFontOfSize:16]];
+    //    获取lable 高度
+    //    [UIFont systemFontOfSize:16].lineHeight;
+}
+
+
+
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 
     HJTopiccell *cell = [self.tableView dequeueReusableCellWithIdentifier:HJTopicId];
     
     cell.topic =  self.topics[indexPath.row];
+    
+//    NSLog(@"%ld",(long)cell.topic.type);
     return cell;
     
+}
+- (void)showMessageWithText:(NSString *)text{
+    UILabel *alertLabel = [[UILabel alloc] init];
+    alertLabel.font = [UIFont systemFontOfSize:15];
+    alertLabel.text = text;
+    alertLabel.textAlignment = NSTextAlignmentCenter;
+    alertLabel.layer.masksToBounds = YES;
+    alertLabel.textColor = [UIColor whiteColor];
+    alertLabel.bounds = CGRectMake(0, 0, 100, 80);
+    alertLabel.center = CGPointMake(self.view.frame.size.width * 0.5, self.view.frame.size.height * 0.5);
+    alertLabel.backgroundColor = [UIColor colorWithRed:25/255.0 green:25/255.0 blue:25/255.0 alpha:1.0];
+    alertLabel.layer.cornerRadius = 10.0f;
+    [[UIApplication sharedApplication].keyWindow addSubview:alertLabel];
+    
+    [UIView animateWithDuration:5 animations:^{
+        alertLabel.alpha = 0.0;
+    } completion:^(BOOL finished) {
+        [alertLabel removeFromSuperview];
+    }];
 }
 
 

@@ -9,6 +9,7 @@
 #import "HJTopiccell.h"
 #import "HJTopic.h"
 #import "UIImageView+WebCache.h"
+#import "UIImage+Antialias.h"
 
 @interface HJTopiccell ()
 @property (strong, nonatomic) IBOutlet UIImageView *profileImageView;
@@ -59,7 +60,16 @@
 {
     _topic = topic;
     
-    [self.profileImageView sd_setImageWithURL:[NSURL URLWithString:topic.profile_image] placeholderImage:[UIImage imageNamed:@"defaultUserIcon"]];
+//    [self.profileImageView sd_setImageWithURL:[NSURL URLWithString:topic.profile_image] placeholderImage:[UIImage imageNamed:@"defaultUserIcon"]];
+    
+    
+    [self.profileImageView sd_setImageWithURL:[NSURL URLWithString:topic.profile_image] placeholderImage:[UIImage imageNamed:@""] options:SDWebImageCacheMemoryOnly completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
+        
+        if (!image) return ;
+
+        self.profileImageView.image = [image circleImage];
+        
+    }];
     self.nameLable.text = topic.name;
     
     self.createdAtLable.text = topic.created_at;

@@ -8,6 +8,25 @@
 
 #import <Foundation/Foundation.h>
 
+typedef NS_ENUM(NSUInteger , TopicType) {
+    
+    /* 全部 */
+    TopicTypeAll = 1,
+    
+    /* 图片 */
+    TopicTypePicture = 10,
+    
+    /* 段子 */
+    TopicTypeWWord = 29,
+    
+    /* 声音 */
+    TopicTypeVoice = 31,
+    
+    /* 视频 */
+    TopicTypeVideo = 41,
+    
+};
+
 @interface HJTopic : NSObject
 
 
@@ -27,5 +46,8 @@
 @property (nonatomic, assign) NSInteger repost;
 /** 评论数量 */
 @property (nonatomic, assign) NSInteger comment;
+
+//帖子的类型，1为全部 10为图片 29为段子 31为音频 41为视频
+@property (nonatomic, assign) NSInteger type;
 
 @end

@@ -16,4 +16,7 @@
 
 + (UIImage *)imageOriginalWithName:(NSString *)imageName;
 
+//把图片裁剪成圆形的
+- (instancetype)circleImage;
+
 @end

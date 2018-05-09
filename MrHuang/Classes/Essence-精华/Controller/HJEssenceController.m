@@ -122,11 +122,20 @@
     if (self.selectedTitleButton == titleButton) {
         [[NSNotificationCenter defaultCenter] postNotificationName:TitleButtonDidRepeatClickNotification object:nil];
     }
+    // 处理标题按钮点击
+    [self dealTitleButtonClick:titleButton];
+}
+
+/**
+ *  处理标题按钮点击
+ */
+- (void)dealTitleButtonClick:(HJTitleButton *)titleButton
+{
     self.selectedTitleButton.selected = NO;
     titleButton.selected = YES;
     self.selectedTitleButton = titleButton;
     
-     NSUInteger index = titleButton.tag;
+    NSUInteger index = titleButton.tag;
     [UIView animateWithDuration:0.25 animations:^{
         
         self.indicatorView.width = titleButton.titleLabel.width;
@@ -145,12 +154,12 @@
         UIViewController *childVc = self.childViewControllers[i];
         // 如果view还没有被创建，就不用去处理
         if (!childVc.isViewLoaded) continue;
-
+        
         UIScrollView *scrollView = (UIScrollView *)childVc.view;
         if (![scrollView isKindOfClass:[UIScrollView class]]) continue;
-
-       scrollView.scrollsToTop = (i == index);
-
+        
+        scrollView.scrollsToTop = (i == index);
+        
         NSLog(@"%d",scrollView.scrollsToTop);
     }
 }
@@ -196,7 +205,7 @@
     NSUInteger index = scrollView.contentOffset.x / scrollView.width;
     HJTitleButton *titleButton = self.titlesView.subviews[index];
     
-    [self titClick:titleButton];
+    [self dealTitleButtonClick:titleButton];
     
     
 }

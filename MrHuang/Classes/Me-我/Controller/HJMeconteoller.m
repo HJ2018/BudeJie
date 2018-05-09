@@ -48,7 +48,10 @@ static NSString * const ID = @"cell";
 {
     [super viewDidLoad];
     
-    self.tableView.tableFooterView = [[HJMeFooterView alloc]init];
+    
+//    通过UIButton 创建
+    
+//    self.tableView.tableFooterView = [[HJMeFooterView alloc]init];
     
     
     self.tableView.sectionHeaderHeight = 0;
@@ -68,7 +71,9 @@ static NSString * const ID = @"cell";
     // 设置背景色
     self.view.backgroundColor = HJGBColor(223, 223, 223);
     
-//    [self getData];
+//    通过UICollectionView 创建
+    
+    [self getData];
 }
 
 
@@ -78,7 +83,7 @@ static NSString * const ID = @"cell";
     params[@"a"] = @"square";
     params[@"c"] = @"topic";
     
-    [[XMGSessionManager new]request:RequestTypeGet urlStr:URL_ME parameter:params resultBlock:^(id responseObject, NSError *error) {
+    [[XMGSessionManager new]request:RequestTypeGet urlStr:CommonURL parameter:params resultBlock:^(id responseObject, NSError *error) {
         _dataArr =[HJMeSquare mj_objectArrayWithKeyValuesArray:responseObject[@"square_list"]];
         
         [self seeFootView];
@@ -109,8 +114,6 @@ static NSString * const ID = @"cell";
     
     collectionView.dataSource = self;
     collectionView.delegate = self;
-    
-//    [collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:ID];
     
     [collectionView registerNib:[UINib nibWithNibName:@"HJCollectionCell" bundle:nil] forCellWithReuseIdentifier:ID];
     

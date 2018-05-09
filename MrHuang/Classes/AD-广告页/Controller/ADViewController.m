@@ -96,7 +96,7 @@
         
         CGFloat h = BSScreenW / _item.w * _item.h;
         
-        if (h) {
+        if (!isnan(h)) {
             self.adView.frame = CGRectMake(0, 0, BSScreenW, h);
         }else self.adView.frame = CGRectMake(0, 0, BSScreenW, BSScreenH);
         

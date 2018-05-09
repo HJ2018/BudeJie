@@ -38,4 +38,23 @@
     
 }
 
+//把图片裁剪成圆形的
+-(instancetype)circleImage
+{
+    
+    UIGraphicsBeginImageContextWithOptions(self.size, NO, 0);
+    
+    UIBezierPath *path=[UIBezierPath bezierPathWithOvalInRect:CGRectMake(0, 0, self.size.width, self.size.height)];
+    
+    [path addClip];
+    
+    [self drawAtPoint:CGPointZero];
+    
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    
+    UIGraphicsEndImageContext();
+    
+    return image;
+}
+
 @end
