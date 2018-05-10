@@ -74,6 +74,8 @@ static  NSString * const HJTopicId = @"topic";
 
 - (void)tabBarButtonDidRepeatClick
 {
+    
+    [self.tableView  scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:NO];
     // 重复点击的不是精华按钮
     if (self.view.window == nil) return;
     
@@ -139,6 +141,8 @@ static  NSString * const HJTopicId = @"topic";
         // 刷新表格
         [self.tableView reloadData];
         
+        [self.cellHeightDict removeAllObjects];
+        
         [self.tableView.mj_header endRefreshing];
     }];
 }
@@ -177,7 +181,7 @@ static  NSString * const HJTopicId = @"topic";
     HJTopic *topic = self.topics[indexPath.row];
     
 //    用模型的地址作为key
-    NSString *key = [NSString stringWithFormat:@"%p",topic];
+    NSString *key = topic.description;
     
     CGFloat cellHeight =  [self.cellHeightDict[key] doubleValue];
     
@@ -192,8 +196,6 @@ static  NSString * const HJTopicId = @"topic";
         cellHeight += 80;
     
         self.cellHeightDict[key] = @(cellHeight);
-        
-//        [self.cellHeightDict setObject:@(cellHeight) forKey:topic];
     }
 
     return cellHeight;
