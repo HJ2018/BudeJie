@@ -23,8 +23,7 @@
 /** 刷新页数 */
 @property (nonatomic, copy) NSString *maxtime;
 
-/**用来缓存cell的高度的*/
-@property (nonatomic, strong)NSMutableDictionary *cellHeightDict;
+
 
 
 @end
@@ -33,16 +32,6 @@
 
 //重用标示
 static  NSString * const HJTopicId = @"topic";
-
-
--(NSMutableDictionary *)cellHeightDict
-{
-    if (!_cellHeightDict) {
-     
-        _cellHeightDict = [NSMutableDictionary dictionary];
-    }
-    return _cellHeightDict;
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -85,7 +74,6 @@ static  NSString * const HJTopicId = @"topic";
     
     HJLog(@"%@ 2222- 刷新数据", self.class);
 }
-
 
 
 -(void)setuptable
@@ -140,8 +128,7 @@ static  NSString * const HJTopicId = @"topic";
         
         // 刷新表格
         [self.tableView reloadData];
-        
-        [self.cellHeightDict removeAllObjects];
+
         
         [self.tableView.mj_header endRefreshing];
     }];
@@ -178,38 +165,10 @@ static  NSString * const HJTopicId = @"topic";
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    HJTopic *topic = self.topics[indexPath.row];
+//    HJTopic *topic = self.topics[indexPath.row];
     
-//    用模型的地址作为key
-    NSString *key = topic.description;
-    
-    CGFloat cellHeight =  [self.cellHeightDict[key] doubleValue];
-    
-    if (cellHeight == 0) {
-    
-        cellHeight += 60;
-        
-        CGSize textMaxSize = CGSizeMake(BSScreenW - 40, MAXFLOAT);
-        
-        cellHeight += [topic.text boundingRectWithSize:textMaxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:16]} context:nil].size.height + 10;
-
-        cellHeight += 80;
-    
-        self.cellHeightDict[key] = @(cellHeight);
-    }
-
-    return cellHeight;
-    
-    
-    
-    //    过期方法
-    //    cellHeight += [topic.text sizeWithFont:[UIFont systemFontOfSize:16] constrainedToSize:textMaxSize].height + 10;
-    //    获取lable 宽度
-    //    [topic.text sizeWithFont:[UIFont systemFontOfSize:16]];
-    //    获取lable 高度
-    //    [UIFont systemFontOfSize:16].lineHeight;
+    return self.topics[indexPath.row].cellHeight;
 }
-
 
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -219,29 +178,63 @@ static  NSString * const HJTopicId = @"topic";
     
     cell.topic =  self.topics[indexPath.row];
     
-//    NSLog(@"%ld",(long)cell.topic.type);
     return cell;
     
 }
-- (void)showMessageWithText:(NSString *)text{
-    UILabel *alertLabel = [[UILabel alloc] init];
-    alertLabel.font = [UIFont systemFontOfSize:15];
-    alertLabel.text = text;
-    alertLabel.textAlignment = NSTextAlignmentCenter;
-    alertLabel.layer.masksToBounds = YES;
-    alertLabel.textColor = [UIColor whiteColor];
-    alertLabel.bounds = CGRectMake(0, 0, 100, 80);
-    alertLabel.center = CGPointMake(self.view.frame.size.width * 0.5, self.view.frame.size.height * 0.5);
-    alertLabel.backgroundColor = [UIColor colorWithRed:25/255.0 green:25/255.0 blue:25/255.0 alpha:1.0];
-    alertLabel.layer.cornerRadius = 10.0f;
-    [[UIApplication sharedApplication].keyWindow addSubview:alertLabel];
-    
-    [UIView animateWithDuration:5 animations:^{
-        alertLabel.alpha = 0.0;
-    } completion:^(BOOL finished) {
-        [alertLabel removeFromSuperview];
-    }];
-}
+
+
+/**用来缓存cell的高度的*/
+//@property (nonatomic, strong)NSMutableDictionary *cellHeightDict;
+
+
+//-(NSMutableDictionary *)cellHeightDict
+//{
+//    if (!_cellHeightDict) {
+//
+//        _cellHeightDict = [NSMutableDictionary dictionary];
+//    }
+//    return _cellHeightDict;
+//}
+
+
+
+//-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    HJTopic *topic = self.topics[indexPath.row];
+//
+//
+//    CGFloat cellHeight  = 0;
+//
+//
+//
+//    return cellHeight;
+
+//    用模型的地址作为key
+//    NSString *key = topic.description;
+//
+//    CGFloat cellHeight =  [self.cellHeightDict[key] doubleValue];
+
+//    if (cellHeight == 0) {
+
+//    cellHeight += 60;
+//
+//    CGSize textMaxSize = CGSizeMake(BSScreenW - 40, MAXFLOAT);
+//
+//    cellHeight += [topic.text boundingRectWithSize:textMaxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:16]} context:nil].size.height + 10;
+//
+//    cellHeight += 80;
+//
+//        self.cellHeightDict[key] = @(cellHeight);
+//    }
+
+
+//    过期方法
+//    cellHeight += [topic.text sizeWithFont:[UIFont systemFontOfSize:16] constrainedToSize:textMaxSize].height + 10;
+//    获取lable 宽度
+//    [topic.text sizeWithFont:[UIFont systemFontOfSize:16]];
+//    获取lable 高度
+//    [UIFont systemFontOfSize:16].lineHeight;
+//}
 
 
 

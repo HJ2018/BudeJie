@@ -10,4 +10,20 @@
 
 @implementation HJTopic
 
+
+-(CGFloat)cellHeight{
+    
+    
+    if (_cellHeight) return _cellHeight;
+        
+    _cellHeight += 60;
+    
+    CGSize textMaxSize = CGSizeMake(BSScreenW - 40, MAXFLOAT);
+    
+    _cellHeight += [self.text boundingRectWithSize:textMaxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:16]} context:nil].size.height + 10;
+
+    _cellHeight += 80;
+    return _cellHeight;
+}
+
 @end
