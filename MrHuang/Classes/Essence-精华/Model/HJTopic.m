@@ -21,8 +21,38 @@
     CGSize textMaxSize = CGSizeMake(BSScreenW - 40, MAXFLOAT);
     
     _cellHeight += [self.text boundingRectWithSize:textMaxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:16]} context:nil].size.height + 10;
+    
+    
+    if (self.type != TopicTypeWWord) {
+        
+        CGFloat middW = textMaxSize.width;
+        CGFloat middH = middW * self.height /self.width;
+        CGFloat middY = _cellHeight;
+        CGFloat middX = 10;
+        
+        self.middleFrame = CGRectMake(middX, middY, middW+10, middH);
+        
+        _cellHeight += middH + 10;
+        
+    }
+    
+    
+    if (self.top_cmt.count) { // 有最热评论
+        // 标题
+        _cellHeight += 17;
+        
+        // 内容
+        NSDictionary *cmt = self.top_cmt.firstObject;
+        NSString *content = cmt[@"content"];
+        if (content.length == 0) {
+            content = @"[语音评论]";
+        }
+        NSString *username = cmt[@"user"][@"username"];
+        NSString *cmtText = [NSString stringWithFormat:@"%@ : %@", username, content];
+        _cellHeight += [cmtText boundingRectWithSize:textMaxSize options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName : [UIFont systemFontOfSize:16]} context:nil].size.height + 10;
+    }
 
-    _cellHeight += 80;
+    _cellHeight += 40;
     return _cellHeight;
 }
 

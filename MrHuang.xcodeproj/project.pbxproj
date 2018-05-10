@@ -59,6 +59,12 @@
 		53B9E4C31CF6A65F00124A15 /* HJTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 53B9E4BB1CF6A65F00124A15 /* HJTabBar.m */; };
 		53C611E71CFFE1A60099720E /* HJCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 53C611E61CFFE1A60099720E /* HJCell.m */; };
 		53E2F31A1D7EB48000B156C1 /* HJTopic.m in Sources */ = {isa = PBXBuildFile; fileRef = 53E2F3191D7EB48000B156C1 /* HJTopic.m */; };
+		A128270420A418880021FD38 /* VideoView.m in Sources */ = {isa = PBXBuildFile; fileRef = A128270320A418880021FD38 /* VideoView.m */; };
+		A128270620A418920021FD38 /* VideoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A128270520A418920021FD38 /* VideoView.xib */; };
+		A128270920A41E1C0021FD38 /* VoiceView.m in Sources */ = {isa = PBXBuildFile; fileRef = A128270820A41E1C0021FD38 /* VoiceView.m */; };
+		A128270C20A41E3F0021FD38 /* PicetureView.m in Sources */ = {isa = PBXBuildFile; fileRef = A128270B20A41E3F0021FD38 /* PicetureView.m */; };
+		A128270E20A41E510021FD38 /* VoiceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A128270D20A41E510021FD38 /* VoiceView.xib */; };
+		A128271020A41E6F0021FD38 /* PicetureView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A128270F20A41E6F0021FD38 /* PicetureView.xib */; };
 		A1B0249A2091684900323AC7 /* UITextField+Text.m in Sources */ = {isa = PBXBuildFile; fileRef = A1B024992091684900323AC7 /* UITextField+Text.m */; };
 		A1B0249D20916B6800323AC7 /* HJTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = A1B0249C20916B6800323AC7 /* HJTextField.m */; };
 		A1B024B02092A0FB00323AC7 /* XMGADItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A1B024AF2092A0FB00323AC7 /* XMGADItem.m */; };
@@ -196,6 +202,15 @@
 		53C611E61CFFE1A60099720E /* HJCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJCell.m; sourceTree = "<group>"; };
 		53E2F3181D7EB48000B156C1 /* HJTopic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJTopic.h; sourceTree = "<group>"; };
 		53E2F3191D7EB48000B156C1 /* HJTopic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJTopic.m; sourceTree = "<group>"; };
+		A128270220A418880021FD38 /* VideoView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VideoView.h; sourceTree = "<group>"; };
+		A128270320A418880021FD38 /* VideoView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VideoView.m; sourceTree = "<group>"; };
+		A128270520A418920021FD38 /* VideoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VideoView.xib; sourceTree = "<group>"; };
+		A128270720A41E1C0021FD38 /* VoiceView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VoiceView.h; sourceTree = "<group>"; };
+		A128270820A41E1C0021FD38 /* VoiceView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VoiceView.m; sourceTree = "<group>"; };
+		A128270A20A41E3F0021FD38 /* PicetureView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PicetureView.h; sourceTree = "<group>"; };
+		A128270B20A41E3F0021FD38 /* PicetureView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PicetureView.m; sourceTree = "<group>"; };
+		A128270D20A41E510021FD38 /* VoiceView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VoiceView.xib; sourceTree = "<group>"; };
+		A128270F20A41E6F0021FD38 /* PicetureView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PicetureView.xib; sourceTree = "<group>"; };
 		A1B024982091684900323AC7 /* UITextField+Text.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UITextField+Text.h"; sourceTree = "<group>"; };
 		A1B024992091684900323AC7 /* UITextField+Text.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UITextField+Text.m"; sourceTree = "<group>"; };
 		A1B0249B20916B6800323AC7 /* HJTextField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HJTextField.h; sourceTree = "<group>"; };
@@ -367,6 +382,15 @@
 				5391E0751D8E366E002620D3 /* HJTopiccell.h */,
 				5391E0761D8E366E002620D3 /* HJTopiccell.m */,
 				5391E0771D8E366E002620D3 /* HJTopiccell.xib */,
+				A128270220A418880021FD38 /* VideoView.h */,
+				A128270320A418880021FD38 /* VideoView.m */,
+				A128270520A418920021FD38 /* VideoView.xib */,
+				A128270720A41E1C0021FD38 /* VoiceView.h */,
+				A128270820A41E1C0021FD38 /* VoiceView.m */,
+				A128270D20A41E510021FD38 /* VoiceView.xib */,
+				A128270A20A41E3F0021FD38 /* PicetureView.h */,
+				A128270B20A41E3F0021FD38 /* PicetureView.m */,
+				A128270F20A41E6F0021FD38 /* PicetureView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -726,6 +750,7 @@
 				53B9E4911CF6A5B700124A15 /* LaunchScreen.storyboard in Resources */,
 				A33958611E07B2F0009D6A59 /* ADViewController.xib in Resources */,
 				53B9E48E1CF6A5B700124A15 /* Assets.xcassets in Resources */,
+				A128270E20A41E510021FD38 /* VoiceView.xib in Resources */,
 				53629B5A1CF72EA200F45B19 /* HJRecommendCategoryCell.xib in Resources */,
 				533225621D01500900EA300C /* HJWebViewController.xib in Resources */,
 				5354221B1CF6CC08002597E3 /* HJRecommendViewController.xib in Resources */,
@@ -733,7 +758,9 @@
 				A1B024BB2092AE6F00323AC7 /* HJCollectionCell.xib in Resources */,
 				53B9E48C1CF6A5B700124A15 /* Main.storyboard in Resources */,
 				53486F9B1CFEA028007818F0 /* HJLoginRegisterViewController.xib in Resources */,
+				A128270620A418920021FD38 /* VideoView.xib in Resources */,
 				535422131CF6C55E002597E3 /* HJFriendTrendsController.xib in Resources */,
+				A128271020A41E6F0021FD38 /* PicetureView.xib in Resources */,
 				53619A5E1CFD3C5200B1AB7E /* HJRecommendTagCell.xib in Resources */,
 				5391E0791D8E366E002620D3 /* HJTopiccell.xib in Resources */,
 			);
@@ -843,8 +870,10 @@
 				A33958601E07B2F0009D6A59 /* ADViewController.m in Sources */,
 				A1EFD9D62089BA6D00B9ED83 /* BSJTabBar.m in Sources */,
 				A1EFD9C82087302300B9ED83 /* NSObject+Log.m in Sources */,
+				A128270C20A41E3F0021FD38 /* PicetureView.m in Sources */,
 				A1B024BA2092AE6F00323AC7 /* HJCollectionCell.m in Sources */,
 				A1B024B62092A58B00323AC7 /* XMGSessionManager.m in Sources */,
+				A128270920A41E1C0021FD38 /* VoiceView.m in Sources */,
 				53A3BF7A1CF817B50015DC0B /* HJRecommendUser.m in Sources */,
 				53486F9A1CFEA027007818F0 /* HJLoginRegisterViewController.m in Sources */,
 				538BC05C1D24C4AE0091D5F7 /* HJTitleButton.m in Sources */,
@@ -860,6 +889,7 @@
 				5354220E1CF6BB02002597E3 /* UIBarButtonItem+HJExtension.m in Sources */,
 				A1B024B32092A43600323AC7 /* YYHttpTool.m in Sources */,
 				53283A921D86932F000445F8 /* HJRefreshHeader.m in Sources */,
+				A128270420A418880021FD38 /* VideoView.m in Sources */,
 				536BFB911D0519AF00D0F4F3 /* HJSettingViewController.m in Sources */,
 				A1B0249A2091684900323AC7 /* UITextField+Text.m in Sources */,
 				53619A641CFD40B200B1AB7E /* XMGRecommendTag.m in Sources */,

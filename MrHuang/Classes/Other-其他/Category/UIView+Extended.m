@@ -13,6 +13,12 @@
 
 
 
+
++(instancetype)viewFromxib{
+    
+    return [[NSBundle mainBundle] loadNibNamed:NSStringFromClass(self) owner:nil options:nil].firstObject;
+}
+
 - (void)setX:(CGFloat)x
 {
     CGRect frame = self.frame;

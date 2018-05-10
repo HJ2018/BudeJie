@@ -73,6 +73,14 @@ static NSString * const ID = @"cell";
     
 //    通过UICollectionView 创建
     
+    [FileTool getFileSize:CachePath completion:^(NSInteger totalSize) {
+        
+        _totalSize = totalSize;
+        
+        [self.tableView reloadData];
+        
+    }];
+    
     [self getData];
 }
 
@@ -198,14 +206,9 @@ static NSString * const ID = @"cell";
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    // 文件夹非常小,如果我的文件非常大
-    [FileTool getFileSize:CachePath completion:^(NSInteger totalSize) {
-        
-        _totalSize = totalSize;
-        
-        [self.tableView reloadData];
-        
-    }];
+
+    [FileTool removeDirectoryPath:CachePath];
+    _totalSize = 0;
     [self.tableView reloadData];
 }
 
@@ -228,6 +231,7 @@ static NSString * const ID = @"cell";
 // 获取缓存尺寸字符串
 - (NSString *)sizeStr
 {
+    
     NSInteger totalSize = _totalSize;
     NSString *sizeStr = @"清除缓存";
     // MB KB B

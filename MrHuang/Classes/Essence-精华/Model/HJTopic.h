@@ -50,8 +50,15 @@ typedef NS_ENUM(NSUInteger , TopicType) {
 @property (nonatomic, assign) NSInteger type;
 //最热评论
 @property (nonatomic,strong) NSArray *top_cmt;
+/** 宽度 */
+@property (nonatomic, assign) CGFloat width;
+/** 高度 */
+@property (nonatomic, assign) CGFloat height;
 
 /** 额外添加的属性 不是服务器返回的 根据当前模型计算高度 */
 @property (nonatomic, assign) CGFloat cellHeight;
+
+/** 额外添加的属性,计算中图片的frame */
+@property (nonatomic, assign) CGRect middleFrame;
 
 @end

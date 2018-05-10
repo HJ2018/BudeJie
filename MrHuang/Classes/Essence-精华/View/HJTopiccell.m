@@ -10,6 +10,10 @@
 #import "HJTopic.h"
 #import "UIImageView+WebCache.h"
 #import "UIImage+Antialias.h"
+#import "VideoView.h"
+#import "VoiceView.h"
+#import "PicetureView.h"
+
 
 @interface HJTopiccell ()
 @property (strong, nonatomic) IBOutlet UIImageView *profileImageView;
@@ -26,9 +30,50 @@
 @property (strong, nonatomic) IBOutlet UIView *topCmtView;
 @property (strong, nonatomic) IBOutlet UILabel *topCmtContentLable;
 
+
+@property(nonatomic ,weak)VideoView *video_View;
+@property(nonatomic ,weak)VoiceView *voice_View;
+@property(nonatomic ,weak)PicetureView *piceture_view;
+
 @end
 
 @implementation HJTopiccell
+
+
+
+-(VideoView *)video_View
+{
+    if (!_video_View) {
+        VideoView *video_View = [VideoView viewFromxib];
+        
+         [self.contentView addSubview:video_View];
+        _video_View = video_View;
+    }
+    
+    return _video_View;
+}
+-(VoiceView *)voice_View
+{
+    if (!_voice_View) {
+        VoiceView *voice_View = [VoiceView viewFromxib];
+        
+        [self.contentView addSubview:voice_View];
+        _voice_View = voice_View;
+    }
+    
+    return _voice_View;
+}
+-(PicetureView *)piceture_view
+{
+    if (!_piceture_view) {
+        PicetureView *piceture_view = [PicetureView viewFromxib];
+        
+        [self.contentView addSubview:piceture_view];
+        _piceture_view = piceture_view;
+    }
+    
+    return _piceture_view;
+}
 - (IBAction)more:(id)sender {
     
     
@@ -90,9 +135,49 @@
     }else{
          self.topcommentsView.hidden = YES;
     }
+    
+    if (topic.type == TopicTypeVideo) {
+        
+        self.video_View.hidden = NO;
+        self.voice_View.hidden = YES;
+        self.piceture_view.hidden = YES;
+        
+    }else if(topic.type == TopicTypeVoice){
+        self.video_View.hidden = YES;
+        self.voice_View.hidden = NO;
+        self.piceture_view.hidden = YES;
+        
+    }else if (topic.type == TopicTypePicture){
+        self.video_View.hidden = YES;
+        self.voice_View.hidden = YES;
+        self.piceture_view.hidden = NO;
+
+    }else if (topic.type == TopicTypeWWord){
+        self.video_View.hidden = YES;
+        self.voice_View.hidden = YES;
+        self.piceture_view.hidden = YES;
+    }
 }
 
 
+-(void)layoutSubviews{
+    [super layoutSubviews];
+    
+    if (self.topic.type == TopicTypeVideo) {
+        
+          self.video_View.frame = self.topic.middleFrame;
+        
+    }else if(self.topic.type == TopicTypeVoice){
+        
+        self.voice_View.frame = self.topic.middleFrame;;
+        
+    }else if (self.topic.type == TopicTypePicture){
+        
+        self.piceture_view.frame = self.topic.middleFrame;;
+
+    }
+    
+}
 -(void)setupButton:(UIButton *)button number:(NSInteger)number placeholder:(NSString *)placeholder
 {
     if ( number >=10000) {

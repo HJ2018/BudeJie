@@ -124,6 +124,8 @@ static  NSString * const HJTopicId = @"topic";
 
     [[XMGSessionManager new]request:RequestTypeGet urlStr:CommonURL parameter:params resultBlock:^(id responseObject, NSError *error) {
         
+          NSLog(@"%@",responseObject);
+        
         self.maxtime = responseObject[@"info"][@"maxtime"];
         
         self.topics = [HJTopic mj_objectArrayWithKeyValuesArray:responseObject[@"list"]];
@@ -147,6 +149,10 @@ static  NSString * const HJTopicId = @"topic";
     [params setObject:self.maxtime forKey:@"maxtime"];
     
     [[XMGSessionManager new]request:RequestTypeGet urlStr:CommonURL parameter:params resultBlock:^(id responseObject, NSError *error) {
+        
+        
+        NSLog(@"%@",responseObject);
+        
         
         self.maxtime = responseObject[@"info"][@"maxtime"];
         
