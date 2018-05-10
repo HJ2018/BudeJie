@@ -63,7 +63,7 @@
 //    [self.profileImageView sd_setImageWithURL:[NSURL URLWithString:topic.profile_image] placeholderImage:[UIImage imageNamed:@"defaultUserIcon"]];
     
     
-    [self.profileImageView sd_setImageWithURL:[NSURL URLWithString:topic.profile_image] placeholderImage:[UIImage imageNamed:@""] options:SDWebImageCacheMemoryOnly completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
+    [self.profileImageView sd_setImageWithURL:[NSURL URLWithString:topic.profile_image] placeholderImage:[UIImage imageNamed:@"defaultUserIcon"] options:SDWebImageCacheMemoryOnly completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
         
         if (!image) return ;
 
@@ -76,22 +76,6 @@
     
     self.text_lable.text = topic.text;
     
-//    if (topic.cai>=10000) {
-//          [self.caiButton setTitle:[NSString stringWithFormat:@"%.1f万",topic.cai/10000.0] forState:UIControlStateNormal];
-//    }else if (topic.cai>0)
-//   {
-//        [self.caiButton setTitle:[NSString stringWithFormat:@"%zd", topic.cai] forState:UIControlStateNormal];
-//   }else{
-//        [self.caiButton setTitle:@"踩" forState:UIControlStateNormal];
-//   }
-    
-//     [self.dingButton setTitle:[NSString stringWithFormat:@"%zd",topic.ding] forState:UIControlStateNormal];
-//    
-//    [self.repostButton setTitle:[NSString stringWithFormat:@"%zd",topic.repost] forState:UIControlStateNormal];
-//    
-//    [self.commentButton setTitle:[NSString stringWithFormat:@"%zd",topic.comment] forState:UIControlStateNormal];
-    
-    
     [self setupButton:self.caiButton number:topic.cai placeholder:@"踩"];
     
     [self setupButton:self.dingButton number:topic.ding placeholder:@"顶"];
@@ -99,6 +83,13 @@
     [self setupButton:self.repostButton number:topic.repost placeholder:@"分享"];
     
     [self setupButton:self.commentButton number:topic.comment placeholder:@"评论"];
+    
+    
+    if (topic.top_cmt.count) {
+        self.topcommentsView.hidden = NO;
+    }else{
+         self.topcommentsView.hidden = YES;
+    }
 }
 
 

@@ -13,5 +13,7 @@
 @interface HJTopiccell : UITableViewCell
 
 @property (nonatomic , strong)HJTopic *topic;
+@property (weak, nonatomic) IBOutlet UIView *topcommentsView;
+@property (weak, nonatomic) IBOutlet UILabel *commentsLable;
 
 @end

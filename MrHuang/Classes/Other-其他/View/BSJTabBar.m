@@ -56,7 +56,7 @@
         if (idx == 2) {
             [self.publishBtn sizeToFit];
             self.publishBtn.centerX = self.width * 0.5;
-            self.publishBtn.y = 5;
+            self.publishBtn.y = 0;
 //            self.publishBtn.lmj_size = CGSizeMake(itemWidth, itemWidth);
         }
         

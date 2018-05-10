@@ -90,6 +90,8 @@ static  NSString * const HJTopicId = @"topic";
     self.tableView.contentInset = UIEdgeInsetsMake(35, 0, 0, 0);
     self.tableView.scrollIndicatorInsets = self.tableView.contentInset;
     
+    self.tableView.estimatedRowHeight = 200;
+    
 //    注册cell
     [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([HJTopiccell class]) bundle:nil] forCellReuseIdentifier:HJTopicId];
 }
