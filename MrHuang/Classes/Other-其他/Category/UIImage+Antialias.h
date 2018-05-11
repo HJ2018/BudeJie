@@ -19,4 +19,6 @@
 //把图片裁剪成圆形的
 - (instancetype)circleImage;
 
++ (instancetype)xmg_circleImageNamed:(NSString *)name;
+
 @end

@@ -65,6 +65,7 @@
 		A128270C20A41E3F0021FD38 /* PicetureView.m in Sources */ = {isa = PBXBuildFile; fileRef = A128270B20A41E3F0021FD38 /* PicetureView.m */; };
 		A128270E20A41E510021FD38 /* VoiceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A128270D20A41E510021FD38 /* VoiceView.xib */; };
 		A128271020A41E6F0021FD38 /* PicetureView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A128270F20A41E6F0021FD38 /* PicetureView.xib */; };
+		A128271320A52AB80021FD38 /* UIImageView+Download.m in Sources */ = {isa = PBXBuildFile; fileRef = A128271220A52AB80021FD38 /* UIImageView+Download.m */; };
 		A1B0249A2091684900323AC7 /* UITextField+Text.m in Sources */ = {isa = PBXBuildFile; fileRef = A1B024992091684900323AC7 /* UITextField+Text.m */; };
 		A1B0249D20916B6800323AC7 /* HJTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = A1B0249C20916B6800323AC7 /* HJTextField.m */; };
 		A1B024B02092A0FB00323AC7 /* XMGADItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A1B024AF2092A0FB00323AC7 /* XMGADItem.m */; };
@@ -211,6 +212,8 @@
 		A128270B20A41E3F0021FD38 /* PicetureView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PicetureView.m; sourceTree = "<group>"; };
 		A128270D20A41E510021FD38 /* VoiceView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VoiceView.xib; sourceTree = "<group>"; };
 		A128270F20A41E6F0021FD38 /* PicetureView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PicetureView.xib; sourceTree = "<group>"; };
+		A128271120A52AB80021FD38 /* UIImageView+Download.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+Download.h"; sourceTree = "<group>"; };
+		A128271220A52AB80021FD38 /* UIImageView+Download.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+Download.m"; sourceTree = "<group>"; };
 		A1B024982091684900323AC7 /* UITextField+Text.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UITextField+Text.h"; sourceTree = "<group>"; };
 		A1B024992091684900323AC7 /* UITextField+Text.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UITextField+Text.m"; sourceTree = "<group>"; };
 		A1B0249B20916B6800323AC7 /* HJTextField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HJTextField.h; sourceTree = "<group>"; };
@@ -545,6 +548,8 @@
 		53B9E4B41CF6A65F00124A15 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				A128271120A52AB80021FD38 /* UIImageView+Download.h */,
+				A128271220A52AB80021FD38 /* UIImageView+Download.m */,
 				A1EFD9CA2087303500B9ED83 /* Foundation+Log.m */,
 				A1EFD9C12087302200B9ED83 /* NSObject+Log.h */,
 				A1EFD9C42087302300B9ED83 /* NSObject+Log.m */,
@@ -866,6 +871,7 @@
 				53B9E4BF1CF6A65F00124A15 /* HJNewConteroller.m in Sources */,
 				53E2F31A1D7EB48000B156C1 /* HJTopic.m in Sources */,
 				53619A5D1CFD3C5200B1AB7E /* HJRecommendTagCell.m in Sources */,
+				A128271320A52AB80021FD38 /* UIImageView+Download.m in Sources */,
 				538BC0681D24F37A0091D5F7 /* HJPictureViewController.m in Sources */,
 				A33958601E07B2F0009D6A59 /* ADViewController.m in Sources */,
 				A1EFD9D62089BA6D00B9ED83 /* BSJTabBar.m in Sources */,

@@ -10,6 +10,7 @@
 #import "HJTopic.h"
 #import "UIImageView+WebCache.h"
 #import "AFNetworking.h"
+#import "UIImageView+Download.h"
 
 @interface VideoView()
 
@@ -33,35 +34,41 @@
 -(void)setTopic:(HJTopic *)topic{
     _topic = topic;
     
-    //    如果有占位图片补上占位图片
-    UIImage *placeholder = nil;
-//    创建网络监听 调用网络在AppDelegate里面
-    AFNetworkReachabilityManager *manager = [AFNetworkReachabilityManager sharedManager];
-    //    通过SDWebImage 取缓存图片 key 就是图片的url
-    UIImage *SDimage = [[SDImageCache sharedImageCache]imageFromDiskCacheForKey:topic.image1];
+//    //    如果有占位图片补上占位图片
+//    UIImage *placeholder = nil;
+////    创建网络监听 调用网络在AppDelegate里面
+//    AFNetworkReachabilityManager *manager = [AFNetworkReachabilityManager sharedManager];
+//    //    通过SDWebImage 取缓存图片 key 就是图片的url
+//    UIImage *SDimage = [[SDImageCache sharedImageCache]imageFromDiskCacheForKey:topic.image1];
+//
+//    if (SDimage) {
+//        self.imageView.image = SDimage;
+//    }else{
+//        if (manager.isReachableViaWiFi) {
+//
+//            [self.imageView sd_setImageWithURL:[NSURL URLWithString:topic.image1] placeholderImage:placeholder];
+//
+//        }else if (manager.isReachableViaWWAN){
+//
+//            [self.imageView sd_setImageWithURL:[NSURL URLWithString:topic.image0]placeholderImage:placeholder];
+//
+//        }else{
+//            //            获取缩略图
+//            UIImage *thumbnailimage = [[SDImageCache sharedImageCache]imageFromDiskCacheForKey:topic.image0];
+//            if (thumbnailimage) {
+//                self.imageView.image = thumbnailimage;
+//            }else{
+//                //                没有下载任何图片
+//                self.imageView.image = placeholder;//如果没有占位图片情况循环利用过来的图片
+//            }
+//        }
+//    }
     
-    if (SDimage) {
-        self.imageView.image = SDimage;
-    }else{
-        if (manager.isReachableViaWiFi) {
-            
-            [self.imageView sd_setImageWithURL:[NSURL URLWithString:topic.image1] placeholderImage:placeholder];
-            
-        }else if (manager.isReachableViaWWAN){
-            
-            [self.imageView sd_setImageWithURL:[NSURL URLWithString:topic.image0]placeholderImage:placeholder];
-            
-        }else{
-            //            获取缩略图
-            UIImage *thumbnailimage = [[SDImageCache sharedImageCache]imageFromDiskCacheForKey:topic.image0];
-            if (thumbnailimage) {
-                self.imageView.image = thumbnailimage;
-            }else{
-                //                没有下载任何图片
-                self.imageView.image = placeholder;//如果没有占位图片情况循环利用过来的图片
-            }
-        }
-    }
+     self.placeholderView.hidden = NO;
+    [self.imageView xmg_setOriginImage:topic.image1 thumbnailImage:topic.image0 placeholder:nil completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
+        
+         self.placeholderView.hidden = YES;
+    }];
     
     if ( topic.playcount >=10000) {
         self.playcountLabel.text =[NSString stringWithFormat:@"%.1f万",topic.playcount/10000.0];

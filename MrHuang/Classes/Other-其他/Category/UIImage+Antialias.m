@@ -57,4 +57,9 @@
     return image;
 }
 
+
++ (instancetype)xmg_circleImageNamed:(NSString *)name
+{
+    return [[self imageNamed:name] circleImage];
+}
 @end

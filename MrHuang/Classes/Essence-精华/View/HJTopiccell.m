@@ -13,6 +13,7 @@
 #import "VideoView.h"
 #import "VoiceView.h"
 #import "PicetureView.h"
+#import "UIImageView+Download.h"
 
 
 @interface HJTopiccell ()
@@ -108,13 +109,20 @@
 //    [self.profileImageView sd_setImageWithURL:[NSURL URLWithString:topic.profile_image] placeholderImage:[UIImage imageNamed:@"defaultUserIcon"]];
     
     
-    [self.profileImageView sd_setImageWithURL:[NSURL URLWithString:topic.profile_image] placeholderImage:[UIImage imageNamed:@"defaultUserIcon"] options:SDWebImageCacheMemoryOnly completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
-        
-        if (!image) return ;
-
-        self.profileImageView.image = [image circleImage];
-        
-    }];
+//    [self.profileImageView sd_setImageWithURL:[NSURL URLWithString:topic.profile_image] placeholderImage:[UIImage imageNamed:@"defaultUserIcon"] options:SDWebImageCacheMemoryOnly completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
+//
+//        if (!image) return ;
+//
+//        self.profileImageView.image = [image circleImage];
+//
+//    }];
+    
+//    f封装设置圆形图片
+    [self.profileImageView xmg_setHeader:topic.profile_image];
+    
+    
+    
+    
     self.nameLable.text = topic.name;
     
     self.createdAtLable.text = topic.created_at;

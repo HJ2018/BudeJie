@@ -10,6 +10,7 @@
 #import "HJTopic.h"
 #import "UIImageView+WebCache.h"
 #import "AFNetworking.h"
+#import "UIImageView+Download.h"
 
 @interface PicetureView()
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
