@@ -7,44 +7,191 @@
 //
 
 #import "HJWordViewController.h"
+#import "AFNetworking.h"
+#import "HJTopic.h"
+#import "MJExtension.h"
+#import "UIImageView+WebCache.h"
+#import "MJRefresh.h"
+#import "HJRefreshHeader.h"
+#import "HJTopiccell.h"
+
 
 @interface HJWordViewController ()
+
+/** 所有的帖子数据 */
+@property (nonatomic, strong) NSMutableArray<HJTopic *> *topics;
+
+/** 刷新页数 */
+@property (nonatomic, copy) NSString *maxtime;
 
 @end
 
 @implementation HJWordViewController
 
+//重用标示
+static  NSString * const HJTopicId = @"topic";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // 内边距
-    self.tableView.contentInset = UIEdgeInsetsMake(35, 0, 0, 0);
-    self.tableView.scrollIndicatorInsets = self.tableView.contentInset;
+    [self setupRefresh];
     
-    HJFunc;
+    [self setuptable];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(titleButtonDidRepeatClick) name:TitleButtonDidRepeatClickNotification object:nil];
+    
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(tabBarButtonDidRepeatClick) name:XMGTabBarButtonDidRepeatClickNotification object:nil];
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+-(void)titleButtonDidRepeatClick
+{
+    [self tabBarButtonDidRepeatClick];
     
 }
 
+- (void)tabBarButtonDidRepeatClick
+{
+    
+    [self.tableView  scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:NO];
+    // 重复点击的不是精华按钮
+    if (self.view.window == nil) return;
+    
+    if (self.tableView.scrollsToTop == NO) return;
+    
+    [self setupRefresh];
+    
+    HJLog(@"%@ 2222- 刷新数据", self.class);
+}
+
+
+-(void)setuptable
+{
+    
+    //     self.tableView.rowHeight = 300;
+    
+    self.tableView.backgroundColor = HJCommonBgColor;
+    
+    //    去掉tableview的分割线
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
+    //    // 内边距
+    self.tableView.contentInset = UIEdgeInsetsMake(35, 0, 0, 0);
+    self.tableView.scrollIndicatorInsets = self.tableView.contentInset;
+    
+    //    self.tableView.estimatedRowHeight = 200;
+    
+    //    注册cell
+    [self.tableView registerNib:[UINib nibWithNibName:NSStringFromClass([HJTopiccell class]) bundle:nil] forCellReuseIdentifier:HJTopicId];
+}
+
+#pragma mark - 刷新控件
+
+-(void)setupRefresh
+{
+    if ([self.tableView.mj_header isRefreshing]) return;
+    
+    self.tableView.mj_header = [HJRefreshHeader headerWithRefreshingTarget:self refreshingAction:@selector(loadNewTopics)];
+    
+    [self.tableView.mj_header beginRefreshing];
+    
+    self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreTopics)];
+    
+}
+
+#pragma mark - 数据加载
+
+-(void)loadNewTopics
+{
+    
+    NSMutableDictionary *params= [NSMutableDictionary dictionary];
+    
+    [params setObject:@"list" forKey:@"a"];
+    [params setObject:@"data" forKey:@"c"];
+    [params setObject:@29 forKey:@"type"];
+    
+    [[XMGSessionManager new]request:RequestTypeGet urlStr:CommonURL parameter:params resultBlock:^(id responseObject, NSError *error) {
+        
+        NSLog(@"%@",responseObject);
+        
+        self.maxtime = responseObject[@"info"][@"maxtime"];
+        
+        self.topics = [HJTopic mj_objectArrayWithKeyValuesArray:responseObject[@"list"]];
+        
+        // 刷新表格
+        [self.tableView reloadData];
+        
+        
+        [self.tableView.mj_header endRefreshing];
+    }];
+}
+
+-(void)loadMoreTopics
+{
+    
+    NSMutableDictionary *params= [NSMutableDictionary dictionary];
+    
+    [params setObject:@"list" forKey:@"a"];
+    [params setObject:@"data" forKey:@"c"];
+    [params setObject:@29 forKey:@"type"];
+    [params setObject:self.maxtime forKey:@"maxtime"];
+    
+    [[XMGSessionManager new]request:RequestTypeGet urlStr:CommonURL parameter:params resultBlock:^(id responseObject, NSError *error) {
+        
+        
+        NSLog(@"%@",responseObject);
+        
+        
+        self.maxtime = responseObject[@"info"][@"maxtime"];
+        
+        NSArray *moreTopics = [HJTopic mj_objectArrayWithKeyValuesArray:responseObject[@"list"]];
+        [self.topics addObjectsFromArray:moreTopics];
+        
+        // 刷新表格
+        [self.tableView reloadData];
+        
+        [self.tableView.mj_footer endRefreshing];
+    }];
+}
+
+
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    // 清除缓存
+    [[SDImageCache sharedImageCache] clearMemory];
+}
+
+-(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
+    
+    // 清除缓存
+    [[SDImageCache sharedImageCache] clearMemory];
+}
+
+
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 50;
+    return self.topics.count;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    //    HJTopic *topic = self.topics[indexPath.row];
+    
+    return self.topics[indexPath.row].cellHeight;
 }
 
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *ID = @"cell";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
+    HJTopiccell *cell = [self.tableView dequeueReusableCellWithIdentifier:HJTopicId];
     
-    if (!cell) {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
-        cell.backgroundColor = HJRandomColor;
-        
-    }
-    
-    cell.textLabel.text = [NSString stringWithFormat:@" %@ --%ld",[self class],(long)indexPath.row];
-    
+    cell.topic =  self.topics[indexPath.row];
     
     return cell;
     
