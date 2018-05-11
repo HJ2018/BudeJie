@@ -51,7 +51,7 @@ static NSString * const ID = @"cell";
     
 //    通过UIButton 创建
     
-//    self.tableView.tableFooterView = [[HJMeFooterView alloc]init];
+    self.tableView.tableFooterView = [[HJMeFooterView alloc]init];
     
     
     self.tableView.sectionHeaderHeight = 0;
@@ -71,8 +71,7 @@ static NSString * const ID = @"cell";
     // 设置背景色
     self.view.backgroundColor = HJGBColor(223, 223, 223);
     
-//    通过UICollectionView 创建
-    
+//    获取缓存
     [FileTool getFileSize:CachePath completion:^(NSInteger totalSize) {
         
         _totalSize = totalSize;
@@ -81,6 +80,7 @@ static NSString * const ID = @"cell";
         
     }];
     
+//    通过UICollectionView 创建
     [self getData];
 }
 

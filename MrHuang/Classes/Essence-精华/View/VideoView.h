@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+@class HJTopic;
 @interface VideoView : UIView
+
+@property (nonatomic , strong)HJTopic *topic;
 
 @end

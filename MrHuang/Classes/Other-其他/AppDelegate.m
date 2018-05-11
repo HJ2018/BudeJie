@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "HJTabBarController.h"
 #import "ADViewController.h"
+#import "AFNetworking.h"
 @interface AppDelegate ()
 
 @end
@@ -22,6 +23,9 @@
     self.window.frame = [UIScreen mainScreen].bounds;
     
     self.window.rootViewController = [[ADViewController alloc]init];
+    
+    
+    [[AFNetworkReachabilityManager sharedManager] startMonitoring];
     
     [self.window makeKeyAndVisible];
     

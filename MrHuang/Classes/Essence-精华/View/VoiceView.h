@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+@class HJTopic;
 @interface VoiceView : UIView
+
+@property (nonatomic , strong)HJTopic *topic;
 
 @end

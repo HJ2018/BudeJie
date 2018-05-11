@@ -141,16 +141,19 @@
         self.video_View.hidden = NO;
         self.voice_View.hidden = YES;
         self.piceture_view.hidden = YES;
+        self.video_View.topic = topic;
         
     }else if(topic.type == TopicTypeVoice){
         self.video_View.hidden = YES;
         self.voice_View.hidden = NO;
         self.piceture_view.hidden = YES;
+          self.voice_View.topic = topic;
         
     }else if (topic.type == TopicTypePicture){
         self.video_View.hidden = YES;
         self.voice_View.hidden = YES;
         self.piceture_view.hidden = NO;
+        self.piceture_view.topic = topic;
 
     }else if (topic.type == TopicTypeWWord){
         self.video_View.hidden = YES;

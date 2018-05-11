@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+@class HJTopic;
 @interface PicetureView : UIView
+
+@property (nonatomic , strong)HJTopic *topic;
 
 @end

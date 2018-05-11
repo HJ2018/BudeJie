@@ -13,12 +13,69 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="VoiceView">
-            <rect key="frame" x="0.0" y="0.0" width="182" height="127"/>
+            <rect key="frame" x="0.0" y="0.0" width="267" height="208"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <color key="backgroundColor" red="0.8930559643" green="1" blue="0.55717402969999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <subviews>
+                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imageBackground" translatesAutoresizingMaskIntoConstraints="NO" id="OZe-o7-B85">
+                    <rect key="frame" x="0.0" y="30" width="267" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="viV-Ns-Qyo"/>
+                    </constraints>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eIy-wQ-TEd">
+                    <rect key="frame" x="0.0" y="0.0" width="267" height="208"/>
+                    <color key="backgroundColor" white="0.33333333329999998" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Ct-uK-IFT">
+                    <rect key="frame" x="102" y="72.5" width="63" height="63"/>
+                    <state key="normal" image="playButtonPlay" backgroundImage="playButton"/>
+                    <state key="highlighted" backgroundImage="playButtonClick"/>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4343播放" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yPT-kg-iTE">
+                    <rect key="frame" x="203" y="0.0" width="64" height="17"/>
+                    <color key="backgroundColor" white="0.33333333329999998" alpha="0.50489619006849318" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="03:20" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9A4-ce-mxz">
+                    <rect key="frame" x="228.5" y="191" width="38.5" height="17"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <constraints>
+                <constraint firstItem="5Ct-uK-IFT" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="50z-2R-min"/>
+                <constraint firstItem="yPT-kg-iTE" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="AOf-tv-BSG"/>
+                <constraint firstItem="eIy-wQ-TEd" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="F2I-nv-YEn"/>
+                <constraint firstItem="OZe-o7-B85" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="30" id="Oap-iJ-Uef"/>
+                <constraint firstItem="OZe-o7-B85" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="SBE-MX-jJF"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="9A4-ce-mxz" secondAttribute="bottom" id="cuj-rm-rC1"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="yPT-kg-iTE" secondAttribute="trailing" id="dC6-A1-TA3"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="eIy-wQ-TEd" secondAttribute="bottom" id="eBf-jU-iSr"/>
+                <constraint firstItem="OZe-o7-B85" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="fXc-J6-0d2"/>
+                <constraint firstItem="eIy-wQ-TEd" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="iy6-me-8t5"/>
+                <constraint firstAttribute="trailing" secondItem="eIy-wQ-TEd" secondAttribute="trailing" id="quZ-OH-Vzp"/>
+                <constraint firstItem="5Ct-uK-IFT" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="ur5-Yy-tiH"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="9A4-ce-mxz" secondAttribute="trailing" id="yMf-LS-yP7"/>
+            </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <point key="canvasLocation" x="59" y="-189.5"/>
+            <connections>
+                <outlet property="imageView" destination="eIy-wQ-TEd" id="VBt-fx-H47"/>
+                <outlet property="placeholderView" destination="OZe-o7-B85" id="ig6-xb-wdD"/>
+                <outlet property="playcountLabel" destination="yPT-kg-iTE" id="VGL-aR-e5t"/>
+                <outlet property="voicetimeLabel" destination="9A4-ce-mxz" id="ohR-KM-dWH"/>
+            </connections>
+            <point key="canvasLocation" x="101.5" y="-149"/>
         </view>
     </objects>
+    <resources>
+        <image name="imageBackground" width="75" height="15"/>
+        <image name="playButton" width="63" height="63"/>
+        <image name="playButtonClick" width="63" height="63"/>
+        <image name="playButtonPlay" width="30" height="30"/>
+    </resources>
 </document>
