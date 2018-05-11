@@ -23,9 +23,6 @@
 /** 刷新页数 */
 @property (nonatomic, copy) NSString *maxtime;
 
-
-
-
 @end
 
 @implementation HJAllViewController
@@ -164,6 +161,20 @@ static  NSString * const HJTopicId = @"topic";
         
         [self.tableView.mj_footer endRefreshing];
     }];
+}
+
+
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    // 清除缓存
+    [[SDImageCache sharedImageCache] clearMemory];
+}
+
+-(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
+    
+    // 清除缓存
+    [[SDImageCache sharedImageCache] clearMemory];
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
