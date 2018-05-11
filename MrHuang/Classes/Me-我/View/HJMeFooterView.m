@@ -11,9 +11,7 @@
 #import "AFNetworking.h"
 #import "HJWebViewController.h"
 #import "MJExtension.h"
-
 #import "HJMeSquare.h"
-
 #import "HJMeSquareButton.h"
 
 @implementation HJMeFooterView

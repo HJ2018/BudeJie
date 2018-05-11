@@ -11,6 +11,8 @@
 #import "UIImageView+WebCache.h"
 #import "AFNetworking.h"
 #import "UIImageView+Download.h"
+#import "UIImage+GIF.h"
+#import "SeeBigPictureViewController.h"
 
 @interface PicetureView()
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
@@ -31,28 +33,44 @@
 -(void)setTopic:(HJTopic *)topic{
     
     _topic = topic;
+
     
 //    如果有占位图片补上占位图片
     UIImage *placeholder = nil;
-    
+
     AFNetworkReachabilityManager *manager = [AFNetworkReachabilityManager sharedManager];
 //    通过SDWebImage 取缓存图片 key 就是图片的url
     UIImage *SDimage = [[SDImageCache sharedImageCache]imageFromDiskCacheForKey:topic.image1];
-    
+
     if (SDimage) {
         self.imageView.image = SDimage;
     }else{
         if (manager.isReachableViaWiFi) {
-            
-            [self.imageView sd_setImageWithURL:[NSURL URLWithString:topic.image1] placeholderImage:placeholder];
-            
+
+            if (topic.is_gif) {
+
+                NSData *imagedata = [NSData dataWithContentsOfURL:[NSURL URLWithString:topic.image1]];
+                self.imageView.image = [UIImage sd_animatedGIFWithData:imagedata];
+                
+            }else{
+                 [self.imageView sd_setImageWithURL:[NSURL URLWithString:topic.image1] placeholderImage:placeholder];
+            }
+
         }else if (manager.isReachableViaWWAN){
             
-            [self.imageView sd_setImageWithURL:[NSURL URLWithString:topic.image0]placeholderImage:placeholder];
-            
+            if (topic.is_gif) {
+                
+                NSData *imagedata = [NSData dataWithContentsOfURL:[NSURL URLWithString:topic.image0]];
+                self.imageView.image = [UIImage sd_animatedGIFWithData:imagedata];
+                
+            }else{
+               [self.imageView sd_setImageWithURL:[NSURL URLWithString:topic.image0]placeholderImage:placeholder];
+            }
+
         }else{
             //            获取缩略图
             UIImage *thumbnailimage = [[SDImageCache sharedImageCache]imageFromDiskCacheForKey:topic.image0];
+            
             if (thumbnailimage) {
                 self.imageView.image = thumbnailimage;
             }else{
@@ -63,6 +81,47 @@
     }
     
     
+    
+//    忽略大小写
+//    if ([topic.image1.lowercaseString hasSuffix:@"gif"]) {
+//
+//    }
+    
+    
+    if (topic.isBigPicture) {
+        CGFloat imageW = topic.middleFrame.size.width;
+        CGFloat imageH = imageW * topic.height / topic.width;
+        
+        // 开启上下文
+        UIGraphicsBeginImageContext(CGSizeMake(imageW, imageH));
+        // 绘制图片到上下文中
+        [self.imageView.image drawInRect:CGRectMake(0, 0, imageW, imageH)];
+        self.imageView.image = UIGraphicsGetImageFromCurrentImageContext();
+        // 关闭上下文
+        UIGraphicsEndImageContext();
+    }
+    
+    // gif
+    self.gifView.hidden = !topic.is_gif;
+    
+    // 点击查看大图
+    if (topic.isBigPicture) { // 超长图
+        self.seeBigPictureButton.hidden = NO;
+        self.imageView.contentMode = UIViewContentModeTop;
+        self.imageView.clipsToBounds = YES;
+    } else {
+        self.seeBigPictureButton.hidden = YES;
+        self.imageView.contentMode = UIViewContentModeScaleToFill;
+        self.imageView.clipsToBounds = NO;
+    }
+    
+    
+}
+- (IBAction)seeBigPicet:(id)sender {
+    
+    SeeBigPictureViewController *vc = [[SeeBigPictureViewController alloc] init];
+    vc.topic = self.topic;
+    [self.window.rootViewController presentViewController:vc animated:YES completion:nil];
 }
 
 @end

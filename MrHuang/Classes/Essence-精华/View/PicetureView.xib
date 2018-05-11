@@ -29,6 +29,9 @@
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VOI-Op-T7d">
                     <rect key="frame" x="0.0" y="129" width="291" height="43"/>
                     <state key="normal" title="点击查看大图" image="see-big-picture" backgroundImage="see-big-picture-background"/>
+                    <connections>
+                        <action selector="seeBigPicet:" destination="iN0-l3-epB" eventType="touchUpInside" id="FXY-jt-BMg"/>
+                    </connections>
                 </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="common-gif" translatesAutoresizingMaskIntoConstraints="NO" id="b2v-Jb-6ep">
                     <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>

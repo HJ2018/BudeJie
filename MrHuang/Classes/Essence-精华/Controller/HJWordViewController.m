@@ -22,6 +22,7 @@
     self.tableView.scrollIndicatorInsets = self.tableView.contentInset;
     
     HJFunc;
+    
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

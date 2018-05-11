@@ -11,6 +11,7 @@
 #import "UIImageView+WebCache.h"
 #import "AFNetworking.h"
 #import "UIImageView+Download.h"
+#import "UIImage+GIF.h"
 
 @interface VideoView()
 

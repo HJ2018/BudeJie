@@ -30,7 +30,7 @@
         
         if (middH >= BSScreenH) { // 显示的图片高度超过一个屏幕，就是超长图片
             middH = 200;
-           
+            self.bigPicture = YES;
         }
         CGFloat middY = _cellHeight;
         CGFloat middX = 10;
