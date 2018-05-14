@@ -12,6 +12,7 @@
 #import "AFNetworking.h"
 #import "UIImageView+Download.h"
 #import "UIImage+GIF.h"
+#import "SeeBigPictureViewController.h"
 
 @interface VideoView()
 
@@ -30,6 +31,19 @@
     
     self.autoresizingMask = UIViewAutoresizingNone;
     
+     self.imageView.userInteractionEnabled = YES;
+    [self.imageView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(seeBigPicture)]];
+    
+}
+
+/**
+ *  查看大图
+ */
+- (void)seeBigPicture
+{
+    SeeBigPictureViewController *vc = [[SeeBigPictureViewController alloc] init];
+    vc.topic = self.topic;
+    [self.window.rootViewController presentViewController:vc animated:YES completion:nil];
 }
 
 -(void)setTopic:(HJTopic *)topic{

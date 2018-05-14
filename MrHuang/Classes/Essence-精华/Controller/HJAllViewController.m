@@ -169,6 +169,7 @@ static  NSString * const HJTopicId = @"topic";
 {
     // 清除缓存
     [[SDImageCache sharedImageCache] clearMemory];
+    
 }
 
 //-(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{

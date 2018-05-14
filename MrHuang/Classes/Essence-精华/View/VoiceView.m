@@ -11,6 +11,7 @@
 #import "UIImageView+WebCache.h"
 #import "AFNetworking.h"
 #import "UIImageView+Download.h"
+#import "SeeBigPictureViewController.h"
 
 @interface VoiceView()
 
@@ -29,6 +30,20 @@
     [super awakeFromNib];
     
     self.autoresizingMask = UIViewAutoresizingNone;
+    
+    
+     self.imageView.userInteractionEnabled = YES;
+    [self.imageView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(seeBigPicture)]];
+}
+
+/**
+ *  查看大图
+ */
+- (void)seeBigPicture
+{
+    SeeBigPictureViewController *vc = [[SeeBigPictureViewController alloc] init];
+    vc.topic = self.topic;
+    [self.window.rootViewController presentViewController:vc animated:YES completion:nil];
 }
 
 -(void)setTopic:(HJTopic *)topic{

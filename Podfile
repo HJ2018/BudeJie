@@ -5,5 +5,6 @@ pod 'SVProgressHUD'
 pod 'MJExtension'
 pod 'MJRefresh'
 pod 'SDWebImage'
+pod 'SVProgressHUD'
 
 end

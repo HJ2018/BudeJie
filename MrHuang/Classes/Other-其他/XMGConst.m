@@ -1,3 +1,31 @@
+
+/*
+ 1.weak
+ 1> OC对象
+ 
+ 2.assign
+ 1> 基本数据类型
+ 2> OC对象
+ 
+ 3.strong
+ 1> OC对象
+ 
+ 4.copy
+ 1> NSString *
+ 2> block
+ 
+ 5.使用weak和assign修饰OC对象的区别
+ 1> 成员变量
+ 1) weak生成的成员变量是用__weak修饰的，比如XMGCat * __weak _cat;
+ 2) assign生成的成员变量是用__unsafe_unretained修饰的XMGCat * __unsafe_unretained _cat;
+ 
+ 2> __weak和__unsafe_unretained
+ 1) 都不是强指针（不是强引用），不能保住对象的命
+ 2) __weak : 所指向的对象销毁后，会自动变成nil指针（空指针），不再指向已经销毁的对象
+ 3) __unsafe_unretained : 所指向的对象销毁后，仍旧指向已经销毁的对象
+ */
+
+
 #import <UIKit/UIKit.h>
 
 /** 通用的间距值 */
@@ -22,58 +50,3 @@ NSString  * const TitleButtonDidRepeatClickNotification  = @"TitleButtonDidRepea
 /** TabBarButton被重复点击的通知 */
 NSString  * const XMGTabBarButtonDidRepeatClickNotification = @"XMGTabBarButtonDidRepeatClickNotification";
 
-
-//-(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
-//{
-//
-//    if (Collertion) {
-//        return 1;
-//    }else return 2;
-//}
-//
-//-(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
-//{
-//    if (Collertion) {
-//        return 30;
-//    }
-//    return 1;
-//}
-
-//- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
-//{
-//    return 0;
-//}
-//-(CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
-//{
-//    return 10;
-//}
-
-//-(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    //重用cell
-//
-//    if (Collertion) {
-//        UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:TMOperationId forIndexPath:indexPath];
-//
-//        return cell;
-//    }else{
-//        vehicleCell *cell = (vehicleCell *)[collectionView dequeueReusableCellWithReuseIdentifier:TMVehiclId forIndexPath:indexPath];
-//        [cell setFromNum:600 withToNum:435 withDuration:4.0f];
-//
-//        return cell;
-//    }
-//    return nil;
-//
-//}
-
-//-(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
-//{
-//    if (Collertion) {
-//        if (section%3 ==1) {
-//
-//            return UIEdgeInsetsMake(-20, 0, 0, 0);
-//        }
-//        return UIEdgeInsetsMake(10, 0, 0, 0);
-//
-//    }else return UIEdgeInsetsMake(0, 0, 0, 0);
-//}
