@@ -36,7 +36,6 @@
 //    self.interactivePopGestureRecognizer.delegate = self;
     
 //    修改成全屏滑动
-    
     UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc]initWithTarget:self.interactivePopGestureRecognizer.delegate action:@selector(handleNavigationTransition:)];
     
     [self.view addGestureRecognizer:pan];

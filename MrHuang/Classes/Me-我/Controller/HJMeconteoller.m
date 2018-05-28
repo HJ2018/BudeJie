@@ -74,7 +74,7 @@ static NSString * const ID = @"cell";
 //    获取缓存
     [FileTool getFileSize:CachePath completion:^(NSInteger totalSize) {
         
-        _totalSize = totalSize;
+        self.totalSize = totalSize;
         
         [self.tableView reloadData];
         
@@ -92,7 +92,7 @@ static NSString * const ID = @"cell";
     params[@"c"] = @"topic";
     
     [[XMGSessionManager new]request:RequestTypeGet urlStr:CommonURL parameter:params resultBlock:^(id responseObject, NSError *error) {
-        _dataArr =[HJMeSquare mj_objectArrayWithKeyValuesArray:responseObject[@"square_list"]];
+        self.dataArr =[HJMeSquare mj_objectArrayWithKeyValuesArray:responseObject[@"square_list"]];
         
         [self seeFootView];
         

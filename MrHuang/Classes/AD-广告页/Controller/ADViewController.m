@@ -92,9 +92,9 @@
         
         NSDictionary *adDict = [responseObject[@"ad"] lastObject];
         
-        _item = [XMGADItem mj_objectWithKeyValues:adDict];
+        self.item = [XMGADItem mj_objectWithKeyValues:adDict];
         
-        CGFloat h = BSScreenW / _item.w * _item.h;
+        CGFloat h = BSScreenW / self.item.w * self.item.h;
         
         if (!isnan(h)) {
             self.adView.frame = CGRectMake(0, 0, BSScreenW, h);
@@ -102,7 +102,7 @@
         
         
         
-        [self.adView sd_setImageWithURL:[NSURL URLWithString:_item.w_picurl]];
+        [self.adView sd_setImageWithURL:[NSURL URLWithString:self.item.w_picurl]];
         
     }];
    
