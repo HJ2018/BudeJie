@@ -7,12 +7,25 @@
 		<key>Jie.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>7</integer>
+			<integer>1</integer>
 		</dict>
 		<key>MrHuang.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>6</integer>
+			<integer>0</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>537561041DA9E8A000B63DBC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>53B9E47D1CF6A5B700124A15</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>
