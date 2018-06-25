@@ -697,7 +697,6 @@
 				53B9E47B1CF6A5B700124A15 /* Frameworks */,
 				53B9E47C1CF6A5B700124A15 /* Resources */,
 				D1759E287E6452D63C057C2E /* [CP] Embed Pods Frameworks */,
-				628A74056AFCAD2B6D87B8CA /* [CP] Copy Pods Resources */,
 				537561161DA9E8A000B63DBC /* Embed App Extensions */,
 			);
 			buildRules = (
@@ -784,21 +783,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		628A74056AFCAD2B6D87B8CA /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MrHuang/Pods-MrHuang-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		CBEC7357B3BB56A97B8BF7F3 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
