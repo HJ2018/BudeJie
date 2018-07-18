@@ -70,7 +70,6 @@
     HJNavigationController *nav = [[HJNavigationController alloc]initWithRootViewController:vc];
         [nav.navigationBar setBackgroundImage:[UIImage imageNamed:@"navigationbarBackgroundWhite"] forBarMetrics:UIBarMetricsDefault];
         [self addChildViewController:nav];
-        [self addChildViewController:nav];
     
 }
 
