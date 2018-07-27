@@ -49,6 +49,7 @@
     
     
 }
+-(void)handleNavigationTransition:(UIPanGestureRecognizer *)pag{}
 
 /**
  * 可以在这个方法中拦截所有push进来的控制器

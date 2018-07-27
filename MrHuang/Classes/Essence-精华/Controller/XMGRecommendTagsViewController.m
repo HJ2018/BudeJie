@@ -12,9 +12,12 @@
 #import "AFNetworking.h"
 #import "MJExtension.h"
 #import "XMGRecommendTag.h"
+
+
 @interface XMGRecommendTagsViewController ()
 /** 标签数据 */
 @property (nonatomic, strong) NSArray *tags;
+
 @end
 
 static NSString * const XMGTagsId = @"tag";
