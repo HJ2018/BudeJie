@@ -14,6 +14,8 @@
 #import "MJRefresh.h"
 #import "HJRefreshHeader.h"
 #import "HJTopiccell.h"
+#import "TestController.h"
+
 
 @interface HJAllViewController ()
 
@@ -105,6 +107,13 @@ static  NSString * const HJTopicId = @"topic";
     
     self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreTopics)];
  
+}
+
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    
+    [self.navigationController pushViewController:[TestController new] animated:YES];
 }
 
 
