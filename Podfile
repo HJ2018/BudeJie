@@ -7,6 +7,7 @@ target 'MrHuang' do
     pod 'MJRefresh'
     pod 'SDWebImage'
     pod 'SVProgressHUD'
+    pod 'MBProgressHUD'
 #    pod 'TZScrollViewPopGesture'
 
 end

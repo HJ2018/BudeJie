@@ -80,7 +80,7 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
     JINScrollView *scrollView = [[JINScrollView alloc]init];
     scrollView.delegate =self;
-    scrollView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 64);
+    scrollView.frame = CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     scrollView.pagingEnabled = YES;
     scrollView.showsHorizontalScrollIndicator = NO;
     scrollView.showsVerticalScrollIndicator = NO;
