@@ -41,7 +41,6 @@ CGFloat const margin= 1;
 /** 公共的URL */
 NSString * const CommonURL = @"https://api.budejie.com/api/api_open.php";
 
-
 /** TitleButton被重复点击的通知 */
 
 NSString  * const TitleButtonDidRepeatClickNotification  = @"TitleButtonDidRepeatClickNotification";

@@ -44,6 +44,10 @@
     self.logo.height =50;
     self.logo.x = 0;
     self.logo.y = - 80;
+    
+    self.lastUpdatedTimeLabel.y -= 20;
+    self.stateLabel.y -= 20;
+    self.arrowView.y -= 20;
 }
 
 

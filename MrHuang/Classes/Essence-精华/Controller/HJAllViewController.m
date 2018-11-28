@@ -168,6 +168,13 @@ static  NSString * const HJTopicId = @"topic";
         // 刷新表格
         [self.tableView reloadData];
         
+        
+        
+        
+        
+        
+        
+        
         [self.tableView.mj_footer endRefreshing];
     }];
 }
