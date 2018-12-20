@@ -10,6 +10,9 @@
 #import "HJTabBarController.h"
 #import "ADViewController.h"
 #import "AFNetworking.h"
+#import "UIView+TYLaunchAnimation.h"
+#import "TYLaunchFadeScaleAnimation.h"
+#import "UIImage+TYLaunchImage.h"
 @interface AppDelegate ()
 
 @end
@@ -19,12 +22,15 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
+    
+    UIImageView *imageView = [[UIImageView alloc]initWithImage:[UIImage ty_getLaunchImage]];
+    [imageView showInWindowWithAnimation:[TYLaunchFadeScaleAnimation fadeScaleAnimation] completion:^(BOOL finished) {
+    }];
+    
+    
     self.window = [[UIWindow alloc]init];
     self.window.frame = [UIScreen mainScreen].bounds;
-    
     self.window.rootViewController = [[ADViewController alloc]init];
-    
-    
     [[AFNetworkReachabilityManager sharedManager] startMonitoring];
     
     [self.window makeKeyAndVisible];
