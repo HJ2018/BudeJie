@@ -43,8 +43,28 @@
 {
     _square = square;
     
-    [self setTitle:square.name forState:UIControlStateNormal];
     
-    [self sd_setImageWithURL:[NSURL URLWithString:square.icon] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"setup-head-default"]];
+  
+    if ([_square isKindOfClass:[HJMeSquare class]]) {
+        
+        
+        if (square.name.length > 0) {
+            [self setTitle:square.name forState:UIControlStateNormal];
+        }
+        
+        if (square.icon.length > 0) {
+            
+            [self sd_setImageWithURL:[NSURL URLWithString:square.icon] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"setup-head-default"]];
+        }
+
+        
+    }else{
+        
+        [self setTitle:@"数据为空" forState:UIControlStateNormal];
+        
+        [self sd_setImageWithURL:nil forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"setup-head-default"]];
+    }
+    
+   
 }
 @end

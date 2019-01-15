@@ -159,9 +159,18 @@ static NSString * const ID = @"cell";
     
     HJMeSquare *data = _dataArr[indexPath.row];
     
-    [cell.collImage sd_setImageWithURL:[NSURL URLWithString:data.icon]];
-    cell.collLable.text = data.name;
-    
+    if ([data  isKindOfClass:[HJMeSquare class]]) {
+        
+        if (data.icon.length > 0) {
+            [cell.collImage sd_setImageWithURL:[NSURL URLWithString:data.icon]];
+        }
+        if (data.name.length > 0) {
+            cell.collLable.text = data.name;
+        }
+    }else{
+        cell.collLable.text = @"数据为空";
+        [cell.collImage sd_setImageWithURL:nil placeholderImage:[UIImage imageNamed:@"setup-head-default"]];
+    }
     return cell;
 }
 
