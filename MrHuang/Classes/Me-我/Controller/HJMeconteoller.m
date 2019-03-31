@@ -91,7 +91,7 @@ static NSString * const ID = @"cell";
     params[@"a"] = @"square";
     params[@"c"] = @"topic";
     
-    [[XMGSessionManager new]request:RequestTypeGet urlStr:CommonURL parameter:params resultBlock:^(id responseObject, NSError *error) {
+    [[XMGSessionManager sharedInstance]request:RequestTypeGet urlStr:CommonURL parameter:params resultBlock:^(id responseObject, NSError *error) {
         self.dataArr =[HJMeSquare mj_objectArrayWithKeyValuesArray:responseObject[@"square_list"]];
         
         [self seeFootView];

@@ -696,15 +696,15 @@
 		A96993D721CA8DA300DA954C /* TYLaunchAnimation */ = {
 			isa = PBXGroup;
 			children = (
-				A96993D821CA8DA300DA954C /* TYLaunchFadeScaleAnimation.m */,
-				A96993D921CA8DA300DA954C /* UIImage+TYLaunchImage.h */,
-				A96993DA21CA8DA300DA954C /* UIView+TYLaunchAnimation.h */,
-				A96993DB21CA8DA300DA954C /* TYLaunchBaseAnimation.h */,
-				A96993DC21CA8DA300DA954C /* TYLaunchFadeScaleAnimation.h */,
 				A96993DD21CA8DA300DA954C /* TYLaunchAnimationProtocol.h */,
+				A96993DC21CA8DA300DA954C /* TYLaunchFadeScaleAnimation.h */,
+				A96993D821CA8DA300DA954C /* TYLaunchFadeScaleAnimation.m */,
+				A96993DA21CA8DA300DA954C /* UIView+TYLaunchAnimation.h */,
 				A96993DE21CA8DA300DA954C /* UIView+TYLaunchAnimation.m */,
-				A96993DF21CA8DA300DA954C /* UIImage+TYLaunchImage.m */,
+				A96993DB21CA8DA300DA954C /* TYLaunchBaseAnimation.h */,
 				A96993E021CA8DA300DA954C /* TYLaunchBaseAnimation.m */,
+				A96993D921CA8DA300DA954C /* UIImage+TYLaunchImage.h */,
+				A96993DF21CA8DA300DA954C /* UIImage+TYLaunchImage.m */,
 			);
 			path = TYLaunchAnimation;
 			sourceTree = "<group>";

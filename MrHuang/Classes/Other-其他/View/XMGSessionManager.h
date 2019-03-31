@@ -16,6 +16,9 @@ typedef enum{
 
 
 @interface XMGSessionManager : NSObject
+
++ (instancetype)sharedInstance;
+
 - (void)setValue:(NSString *)value forHttpField:(NSString *)field;
 
 - (void)request:(RequestType)requestType urlStr: (NSString *)urlStr parameter: (NSDictionary *)param resultBlock: (void(^)(id responseObject, NSError *error))resultBlock;

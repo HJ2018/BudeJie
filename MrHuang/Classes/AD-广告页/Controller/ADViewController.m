@@ -88,7 +88,7 @@
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];
     parameters[@"code2"] = code2;
     
-    [[XMGSessionManager new] request:RequestTypeGet urlStr:URL_GG parameter:parameters resultBlock:^(id responseObject, NSError *error) {
+    [[XMGSessionManager sharedInstance] request:RequestTypeGet urlStr:URL_GG parameter:parameters resultBlock:^(id responseObject, NSError *error) {
         
         NSDictionary *adDict = [responseObject[@"ad"] lastObject];
         

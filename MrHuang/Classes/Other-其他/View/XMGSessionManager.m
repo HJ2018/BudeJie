@@ -17,6 +17,18 @@
 
 @implementation XMGSessionManager
 
+
+static XMGSessionManager *instance = nil;
+
++ (instancetype)sharedInstance
+{
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        instance = [[[self class] alloc] init];
+    });
+    return instance;
+}
+
 - (void)setValue:(NSString *)value forHttpField:(NSString *)field {
     [self.sessionManager.requestSerializer setValue:value forHTTPHeaderField:field];
 }

@@ -115,7 +115,7 @@ static  NSString * const HJTopicId = @"topic";
     [params setObject:@"data" forKey:@"c"];
     [params setObject:@31 forKey:@"type"];
     
-    [[XMGSessionManager new]request:RequestTypeGet urlStr:CommonURL parameter:params resultBlock:^(id responseObject, NSError *error) {
+    [[XMGSessionManager sharedInstance]request:RequestTypeGet urlStr:CommonURL parameter:params resultBlock:^(id responseObject, NSError *error) {
         
         NSLog(@"%@",responseObject);
         
@@ -141,7 +141,7 @@ static  NSString * const HJTopicId = @"topic";
     [params setObject:@31 forKey:@"type"];
     [params setObject:self.maxtime forKey:@"maxtime"];
     
-    [[XMGSessionManager new]request:RequestTypeGet urlStr:CommonURL parameter:params resultBlock:^(id responseObject, NSError *error) {
+    [[XMGSessionManager sharedInstance]request:RequestTypeGet urlStr:CommonURL parameter:params resultBlock:^(id responseObject, NSError *error) {
         
         
         NSLog(@"%@",responseObject);
