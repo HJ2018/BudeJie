@@ -59,3 +59,19 @@
 #define iPhone6 (BSScreenH == 667)
 #define iPhone5 (BSScreenH == 568)
 #define iPhone4 (BSScreenH == 480)
+
+//iPhoneX状态栏的高度 44
+#define kState_Height (iPhoneX ? 44.0 : 20.0)
+//NavigationBar的高度 44
+#define kNavigationBar_Height 44.0
+#define SafeAreaTopHeight (BSScreenH >= 812.0 ? 88 : 64)
+#define statusTopHeight (BSScreenH == 812.0 ? 40 : 20)
+#define SafeAreaTabBarpHeight (BSScreenH >= 812.0 ? 83 : 49)
+
+//底部非安全区域的高度 34
+#define kBottomNOSafeArea_Height (iPhoneX ? 34.0 :0.0)
+
+#define NewTabBarHeight (Main_Screen_Height >= 812.0 ? 34 : 0)
+
+
+#define kTabBarHeight ([[UIApplication sharedApplication] statusBarFrame].size.height>20?83:49)

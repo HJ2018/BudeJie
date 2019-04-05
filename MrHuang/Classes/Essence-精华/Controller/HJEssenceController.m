@@ -83,7 +83,7 @@
     UIView *titleView = [[UIView alloc]init];
     
     titleView.backgroundColor = [[UIColor whiteColor]colorWithAlphaComponent:0.7];
-    titleView.frame = CGRectMake(0, 64, self.view.width, 35);
+    titleView.frame = CGRectMake(0, SafeAreaTopHeight, self.view.width, 35);
     [self.view addSubview:titleView];
     
     self.titlesView = titleView;

@@ -53,7 +53,7 @@
 {
     [UIView animateWithDuration:self.duration delay:self.delay options:self.options animations:^{
         
-        view.transform = CGAffineTransformMakeScale(_scale, _scale);
+        view.transform = CGAffineTransformMakeScale(self->_scale, self->_scale);
         view.alpha = 0.0;
         
     } completion:^(BOOL finished) {
