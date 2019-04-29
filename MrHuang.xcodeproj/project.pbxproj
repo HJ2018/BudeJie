@@ -59,6 +59,10 @@
 		53B9E4C31CF6A65F00124A15 /* HJTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 53B9E4BB1CF6A65F00124A15 /* HJTabBar.m */; };
 		53C611E71CFFE1A60099720E /* HJCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 53C611E61CFFE1A60099720E /* HJCell.m */; };
 		53E2F31A1D7EB48000B156C1 /* HJTopic.m in Sources */ = {isa = PBXBuildFile; fileRef = 53E2F3191D7EB48000B156C1 /* HJTopic.m */; };
+		782C740A2276918200E5C417 /* CenterAlertContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 782C74052276918200E5C417 /* CenterAlertContentView.m */; };
+		782C740B2276918200E5C417 /* NKAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 782C74062276918200E5C417 /* NKAlertView.m */; };
+		782C740C2276918200E5C417 /* BottomAlertContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 782C74082276918200E5C417 /* BottomAlertContentView.m */; };
+		782C740D2276918200E5C417 /* JMAlertVIewAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 782C74092276918200E5C417 /* JMAlertVIewAPI.m */; };
 		A128270420A418880021FD38 /* VideoView.m in Sources */ = {isa = PBXBuildFile; fileRef = A128270320A418880021FD38 /* VideoView.m */; };
 		A128270620A418920021FD38 /* VideoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A128270520A418920021FD38 /* VideoView.xib */; };
 		A128270920A41E1C0021FD38 /* VoiceView.m in Sources */ = {isa = PBXBuildFile; fileRef = A128270820A41E1C0021FD38 /* VoiceView.m */; };
@@ -213,6 +217,14 @@
 		53C611E61CFFE1A60099720E /* HJCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJCell.m; sourceTree = "<group>"; };
 		53E2F3181D7EB48000B156C1 /* HJTopic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJTopic.h; sourceTree = "<group>"; };
 		53E2F3191D7EB48000B156C1 /* HJTopic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJTopic.m; sourceTree = "<group>"; };
+		782C74022276918200E5C417 /* NKAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NKAlertView.h; sourceTree = "<group>"; };
+		782C74032276918200E5C417 /* JMAlertVIewAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMAlertVIewAPI.h; sourceTree = "<group>"; };
+		782C74042276918200E5C417 /* BottomAlertContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BottomAlertContentView.h; sourceTree = "<group>"; };
+		782C74052276918200E5C417 /* CenterAlertContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CenterAlertContentView.m; sourceTree = "<group>"; };
+		782C74062276918200E5C417 /* NKAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NKAlertView.m; sourceTree = "<group>"; };
+		782C74072276918200E5C417 /* CenterAlertContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CenterAlertContentView.h; sourceTree = "<group>"; };
+		782C74082276918200E5C417 /* BottomAlertContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BottomAlertContentView.m; sourceTree = "<group>"; };
+		782C74092276918200E5C417 /* JMAlertVIewAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMAlertVIewAPI.m; sourceTree = "<group>"; };
 		A128270220A418880021FD38 /* VideoView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VideoView.h; sourceTree = "<group>"; };
 		A128270320A418880021FD38 /* VideoView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VideoView.m; sourceTree = "<group>"; };
 		A128270520A418920021FD38 /* VideoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VideoView.xib; sourceTree = "<group>"; };
@@ -573,6 +585,7 @@
 		53B9E4B11CF6A65F00124A15 /* Other-其他 */ = {
 			isa = PBXGroup;
 			children = (
+				782C74012276918200E5C417 /* NKAlertView */,
 				A96993D721CA8DA300DA954C /* TYLaunchAnimation */,
 				53B9E4B41CF6A65F00124A15 /* Category */,
 				53B9E4B51CF6A65F00124A15 /* Controller */,
@@ -653,6 +666,21 @@
 				537561061DA9E8A000B63DBC /* NotificationCenter.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		782C74012276918200E5C417 /* NKAlertView */ = {
+			isa = PBXGroup;
+			children = (
+				782C74022276918200E5C417 /* NKAlertView.h */,
+				782C74062276918200E5C417 /* NKAlertView.m */,
+				782C74042276918200E5C417 /* BottomAlertContentView.h */,
+				782C74082276918200E5C417 /* BottomAlertContentView.m */,
+				782C74072276918200E5C417 /* CenterAlertContentView.h */,
+				782C74052276918200E5C417 /* CenterAlertContentView.m */,
+				782C74032276918200E5C417 /* JMAlertVIewAPI.h */,
+				782C74092276918200E5C417 /* JMAlertVIewAPI.m */,
+			);
+			path = NKAlertView;
 			sourceTree = "<group>";
 		};
 		A13C6BA3208D787A00AC178E /* View */ = {
@@ -783,6 +811,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -904,6 +933,7 @@
 				A1EFD9C92087302300B9ED83 /* UIImage+Antialias.m in Sources */,
 				53B9E4C01CF6A65F00124A15 /* AppDelegate.m in Sources */,
 				5354220B1CF6BABE002597E3 /* UIView+Extended.m in Sources */,
+				782C740B2276918200E5C417 /* NKAlertView.m in Sources */,
 				53629B551CF72E7B00F45B19 /* HJRecommendCategory.m in Sources */,
 				5391E0741D8E34B8002620D3 /* XMGConst.m in Sources */,
 				A1EFD9D92089BB5300B9ED83 /* UIButton+HJ.m in Sources */,
@@ -924,12 +954,14 @@
 				A96993E221CA8DA300DA954C /* UIView+TYLaunchAnimation.m in Sources */,
 				53619A5D1CFD3C5200B1AB7E /* HJRecommendTagCell.m in Sources */,
 				A128271320A52AB80021FD38 /* UIImageView+Download.m in Sources */,
+				782C740D2276918200E5C417 /* JMAlertVIewAPI.m in Sources */,
 				538BC0681D24F37A0091D5F7 /* HJPictureViewController.m in Sources */,
 				A33958601E07B2F0009D6A59 /* ADViewController.m in Sources */,
 				A1EFD9D62089BA6D00B9ED83 /* BSJTabBar.m in Sources */,
 				A950C88021104B5300DCE1F1 /* JINScrollView.m in Sources */,
 				A1EFD9C82087302300B9ED83 /* NSObject+Log.m in Sources */,
 				A950C87D210F000100DCE1F1 /* TwoController.m in Sources */,
+				782C740C2276918200E5C417 /* BottomAlertContentView.m in Sources */,
 				A128270C20A41E3F0021FD38 /* PicetureView.m in Sources */,
 				A1B024BA2092AE6F00323AC7 /* HJCollectionCell.m in Sources */,
 				A1B024B62092A58B00323AC7 /* XMGSessionManager.m in Sources */,
@@ -947,6 +979,7 @@
 				53486F961CFE9D52007818F0 /* HJQuickLoginButton.m in Sources */,
 				53619A611CFD3E9D00B1AB7E /* XMGRecommendTagsViewController.m in Sources */,
 				538BC0651D24F3670091D5F7 /* HJVoiceViewController.m in Sources */,
+				782C740A2276918200E5C417 /* CenterAlertContentView.m in Sources */,
 				5354220E1CF6BB02002597E3 /* UIBarButtonItem+HJExtension.m in Sources */,
 				A1B024B32092A43600323AC7 /* YYHttpTool.m in Sources */,
 				53283A921D86932F000445F8 /* HJRefreshHeader.m in Sources */,
