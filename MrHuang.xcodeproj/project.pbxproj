@@ -63,6 +63,7 @@
 		782C740B2276918200E5C417 /* NKAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 782C74062276918200E5C417 /* NKAlertView.m */; };
 		782C740C2276918200E5C417 /* BottomAlertContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 782C74082276918200E5C417 /* BottomAlertContentView.m */; };
 		782C740D2276918200E5C417 /* JMAlertVIewAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 782C74092276918200E5C417 /* JMAlertVIewAPI.m */; };
+		78E49190227EC11200C15F41 /* UIButton+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 78E4918F227EC11200C15F41 /* UIButton+Extensions.m */; };
 		A128270420A418880021FD38 /* VideoView.m in Sources */ = {isa = PBXBuildFile; fileRef = A128270320A418880021FD38 /* VideoView.m */; };
 		A128270620A418920021FD38 /* VideoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A128270520A418920021FD38 /* VideoView.xib */; };
 		A128270920A41E1C0021FD38 /* VoiceView.m in Sources */ = {isa = PBXBuildFile; fileRef = A128270820A41E1C0021FD38 /* VoiceView.m */; };
@@ -225,6 +226,8 @@
 		782C74072276918200E5C417 /* CenterAlertContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CenterAlertContentView.h; sourceTree = "<group>"; };
 		782C74082276918200E5C417 /* BottomAlertContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BottomAlertContentView.m; sourceTree = "<group>"; };
 		782C74092276918200E5C417 /* JMAlertVIewAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMAlertVIewAPI.m; sourceTree = "<group>"; };
+		78E4918E227EC11200C15F41 /* UIButton+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+Extensions.h"; sourceTree = "<group>"; };
+		78E4918F227EC11200C15F41 /* UIButton+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+Extensions.m"; sourceTree = "<group>"; };
 		A128270220A418880021FD38 /* VideoView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VideoView.h; sourceTree = "<group>"; };
 		A128270320A418880021FD38 /* VideoView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VideoView.m; sourceTree = "<group>"; };
 		A128270520A418920021FD38 /* VideoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VideoView.xib; sourceTree = "<group>"; };
@@ -603,6 +606,8 @@
 		53B9E4B41CF6A65F00124A15 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				78E4918E227EC11200C15F41 /* UIButton+Extensions.h */,
+				78E4918F227EC11200C15F41 /* UIButton+Extensions.m */,
 				A128271120A52AB80021FD38 /* UIImageView+Download.h */,
 				A128271220A52AB80021FD38 /* UIImageView+Download.m */,
 				A1EFD9CA2087303500B9ED83 /* Foundation+Log.m */,
@@ -951,6 +956,7 @@
 				53B9E4BF1CF6A65F00124A15 /* HJNewConteroller.m in Sources */,
 				53E2F31A1D7EB48000B156C1 /* HJTopic.m in Sources */,
 				A96993E121CA8DA300DA954C /* TYLaunchFadeScaleAnimation.m in Sources */,
+				78E49190227EC11200C15F41 /* UIButton+Extensions.m in Sources */,
 				A96993E221CA8DA300DA954C /* UIView+TYLaunchAnimation.m in Sources */,
 				53619A5D1CFD3C5200B1AB7E /* HJRecommendTagCell.m in Sources */,
 				A128271320A52AB80021FD38 /* UIImageView+Download.m in Sources */,
