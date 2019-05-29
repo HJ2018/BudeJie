@@ -177,7 +177,6 @@
     // 设置背景色
     self.view.backgroundColor = HJGBColor(223, 223, 223);
 }
-//jie.huang@timanetworks.com
 
 - (void)tagClick
 {
